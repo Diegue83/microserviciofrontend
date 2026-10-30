@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Descarga el código del repositorio
-                git branch: 'main', url: 'https://github.com/Diegue83/Ejercicio5Cliente.git'
+                git branch: 'main', url: 'https://github.com/Diegue83/microserviciofrontend.git'
             }
         }
         stage('Ver Directorio') {
