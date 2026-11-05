@@ -52,7 +52,7 @@ class GestorControllerTest {
     /** Cuerpo recibido por la API simulada en cada ruta. */
     private static final Map<String, String> recibido = new ConcurrentHashMap<>();
 
-    private final GestorController controller = new GestorController();
+    private final GestorController controller = new GestorController("http://localhost:8081");
 
     @BeforeAll
     static void iniciarApiSimulada() throws IOException {
