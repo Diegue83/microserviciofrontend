@@ -1,0 +1,80 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mx.cbtis:Ejercicio5Cliente >-------------------
+[INFO] Building Ejercicio5Cliente 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ Ejercicio5Cliente ---
+[INFO] Deleting C:\Users\52418\OneDrive\Documentos\GPDS\Ejercicio5Cliente\target
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ Ejercicio5Cliente ---
+[INFO] argLine set to -javaagent:C:\\Users\\52418\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.13\\org.jacoco.agent-0.8.13-runtime.jar=destfile=C:\\Users\\52418\\OneDrive\\Documentos\\GPDS\\Ejercicio5Cliente\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Ejercicio5Cliente ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 132 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ Ejercicio5Cliente ---
+[INFO] skip non existing resourceDirectory C:\Users\52418\OneDrive\Documentos\GPDS\Ejercicio5Cliente\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ Ejercicio5Cliente ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+11:43:16.719 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests]: Ejercicio5ClienteApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:43:17.311 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mx.cbtis.Ejercicio5ClienteApplication for test class com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-05T11:43:19.761-06:00  INFO 11596 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Starting Ejercicio5ClienteApplicationTests using Java 21.0.12.1 with PID 11596 (started by 52418 in C:\Users\52418\OneDrive\Documentos\GPDS\Ejercicio5Cliente)
+2026-11-05T11:43:19.769-06:00  INFO 11596 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-11-05T11:43:24.138-06:00  INFO 11596 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Started Ejercicio5ClienteApplicationTests in 6.216 seconds (process running for 10.117)
+mvnw.cmd : Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because 
+bootstrap classpath has been appended
+En línea: 1 Carácter: 483
++ ... ocation $R; & .\mvnw.cmd -B clean test "-Dsurefire.useFile=false" *>  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Java HotSpot(TM...s been appended:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.40 s -- in com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+[INFO] Running com.mx.cbtis.bromitas.GestorControllerTest
+El id del proyecto es: 206
+El id d de la tarea es: 209
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.667 s -- in com.mx.cbtis.bromitas.GestorControllerTest
+[INFO] Running com.mx.cbtis.bromitas.ModelosTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.mx.cbtis.bromitas.ModelosTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ Ejercicio5Cliente ---
+[INFO] Loading execution data file C:\Users\52418\OneDrive\Documentos\GPDS\Ejercicio5Cliente\target\jacoco.exec
+[INFO] Analyzed bundle 'Ejercicio5Cliente' with 7 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25.950 s
+[INFO] Finished at: 2026-11-05T11:43:30-06:00
+[INFO] ------------------------------------------------------------------------

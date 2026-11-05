@@ -1,0 +1,386 @@
+Started by user Diego
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Diegue83/microserviciofrontend.git # timeout=10
+Fetching upstream changes from https://github.com/Diegue83/microserviciofrontend.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Diegue83/microserviciofrontend.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 188925b99b626144ff502c08ba3d06ffce608158 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 188925b99b626144ff502c08ba3d06ffce608158 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 188925b99b626144ff502c08ba3d06ffce608158 # timeout=10
+Commit message: "Pruebas unitarias: cobertura JaCoCo 100% de líneas, ramas y métodos"
+ > git rev-list --no-walk 38b1593e98f2a8c1e00fce81628d9fdb618d73fe # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Ver Directorio)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ ls -la
+total 68
+drwxr-xr-x  7 jenkins jenkins  4096 Nov  5 16:26 .
+drwxr-xr-x  6 jenkins jenkins  4096 Nov  5 16:24 ..
+drwxr-xr-x  8 jenkins jenkins  4096 Nov  5 17:00 .git
+-rw-r--r--  1 jenkins jenkins    37 Nov  5 16:24 .gitattributes
+-rw-r--r--  1 jenkins jenkins    81 Nov  5 16:24 .gitignore
+drwxr-xr-x  3 jenkins jenkins  4096 Nov  5 16:24 .mvn
+-rw-r--r--  1 jenkins jenkins  1075 Nov  5 16:24 HELP.md
+-rw-r--r--  1 jenkins jenkins  2419 Nov  5 16:24 Jenkinsfile
+-rw-r--r--  1 jenkins jenkins 11290 Nov  5 16:24 mvnw
+-rw-r--r--  1 jenkins jenkins  7797 Nov  5 16:24 mvnw.cmd
+-rw-r--r--  1 jenkins jenkins  2658 Nov  5 16:24 pom.xml
+drwxr-xr-x  2 jenkins jenkins  4096 Nov  5 16:27 reportes
+drwxr-xr-x  4 jenkins jenkins  4096 Nov  5 16:24 src
+drwxr-xr-x 11 jenkins jenkins  4096 Nov  5 16:26 target
+[Pipeline] sh
++ java -version
+openjdk version "21.0.13" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode)
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn -version
+Apache Maven 3.9.0 (9b58d2bad23a66be161c4664ef21ce219c2c8584)
+Maven home: /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0
+Java version: 21.0.13, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.15.153.1-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn clean package -Dsurefire.useFile=false
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mx.cbtis:Ejercicio5Cliente >-------------------
+[INFO] Building Ejercicio5Cliente 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ Ejercicio5Cliente ---
+[INFO] Deleting /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ Ejercicio5Cliente ---
+[INFO] argLine set to -javaagent:/var/jenkins_home/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Ejercicio5Cliente ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 132 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ Ejercicio5Cliente ---
+[INFO] skip non existing resourceDirectory /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ Ejercicio5Cliente ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.mx.cbtis.bromitas.GestorControllerTest
+El id del proyecto es: 206
+El id d de la tarea es: 209
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.347 s -- in com.mx.cbtis.bromitas.GestorControllerTest
+[INFO] Running com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+17:01:09.552 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests]: Ejercicio5ClienteApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:01:09.843 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mx.cbtis.Ejercicio5ClienteApplication for test class com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-05T17:01:11.828Z  INFO 4635 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Starting Ejercicio5ClienteApplicationTests using Java 21.0.13 with PID 4635 (started by jenkins in /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront)
+2026-11-05T17:01:11.839Z  INFO 4635 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-11-05T17:01:15.423Z  INFO 4635 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Started Ejercicio5ClienteApplicationTests in 5.149 seconds (process running for 10.991)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.561 s -- in com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+[INFO] Running com.mx.cbtis.bromitas.ModelosTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.mx.cbtis.bromitas.ModelosTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ Ejercicio5Cliente ---
+[INFO] Loading execution data file /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/jacoco.exec
+[INFO] Analyzed bundle 'Ejercicio5Cliente' with 7 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ Ejercicio5Cliente ---
+[INFO] Building jar: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ Ejercicio5Cliente ---
+[INFO] Replacing main artifact /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.177 s
+[INFO] Finished at: 2026-11-05T17:01:54Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonnarServer
+[Pipeline] {
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar -Dsonar.projectKey=Ejercicio5Cliente -Dsonar.projectName=Ejercicio5Cliente -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mx.cbtis:Ejercicio5Cliente >-------------------
+[INFO] Building Ejercicio5Cliente 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:5.5.0.6356:sonar (default-cli) @ Ejercicio5Cliente ---
+[INFO] Java 21.0.13 Eclipse Adoptium (64-bit)
+[INFO] Linux 5.15.153.1-microsoft-standard-WSL2 (amd64)
+[INFO] Communicating with SonarQube Community Build 26.10.0.133078
+[INFO] JRE provisioning: os[linux], arch[x86_64]
+[INFO] Starting SonarScanner Engine...
+[INFO] Java 21.0.12.1 Eclipse Adoptium (64-bit)
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=363ms
+[INFO] Server id: 147B411E-AaGqSEze5s7z_3pHvC2O
+[INFO] Loading required plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=60ms
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=46ms
+[INFO] Load project settings for component key: 'Ejercicio5Cliente'
+[INFO] Load project settings for component key: 'Ejercicio5Cliente' (done) | time=67ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=66ms
+[INFO] Project key: Ejercicio5Cliente
+[INFO] Base dir: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront
+[INFO] Working dir: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/sonar
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=357ms
+[INFO] Auto-configuring with CI 'Jenkins'
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=701ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (483 bytes) | time=49ms
+[INFO] Preprocessing files...
+[INFO] 2 languages detected in 11 preprocessed files (done) | time=179ms
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Loading plugins for detected languages
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=76ms
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=170ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 11 files indexed (done) | time=20ms
+[INFO] Quality profile for java: Sonar way core
+[INFO] Quality profile for xml: Sonar way core
+[INFO] ------------- Run sensors on module Ejercicio5Cliente
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=67ms
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac]
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=3ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 21, preview features enabled (sonar.java.enablePreview): false
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 7 Main java source files with batch size 50 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 7 files.
+[INFO] Using ECJ batch to parse 3 Test java source files with batch size 50 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 3 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=3651ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=173ms
+[INFO] Sensor IaC hadolint report Sensor [iac]
+[INFO] Sensor IaC hadolint report Sensor [iac] (done) | time=4ms
+[INFO] Sensor Java Config Sensor [iac]
+[INFO] There are no files to be analyzed for the Java language
+[INFO] Sensor Java Config Sensor [iac] (done) | time=3ms
+[INFO] Sensor IaC Docker Sensor [iac]
+[INFO] There are no files to be analyzed for the Docker language
+[INFO] Sensor IaC Docker Sensor [iac] (done) | time=24ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=150ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=373ms
+[INFO] Sensor TextAndSecretsSensor [text]
+[INFO] Available processors: 4
+[INFO] Using 4 threads for analysis.
+[INFO] Start fetching files for the text and secrets analysis
+[INFO] Using Git CLI to retrieve dirty files
+[INFO] Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+[INFO] Starting the text and secrets analysis
+[INFO] 11 source files to be analyzed for the text and secrets analysis
+[INFO] 11/11 source files have been analyzed for the text and secrets analysis
+[INFO] Sensor TextAndSecretsSensor [text] (done) | time=1039ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco]
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco] (done) | time=0ms
+[INFO] Sensor IaC Project Sensor [iac]
+[INFO] Sensor IaC Project Sensor [iac] (done) | time=2ms
+[INFO] Sensor JavaProjectSensor [java]
+[INFO] Sensor JavaProjectSensor [java] (done) | time=3ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=1ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=50ms
+[INFO] ------------- Gather SCA dependencies on project
+[INFO] Dependency analysis skipped
+[INFO] SCM Publisher SCM provider for this project is: git
+[INFO] SCM Publisher 3 source files to be analyzed
+[INFO] SCM Publisher 3/3 source files have been analyzed (done) | time=255ms
+[INFO] CPD Executor 1 file had no CPD blocks
+[INFO] CPD Executor Calculating CPD for 6 files
+[INFO] CPD Executor CPD calculation finished (done) | time=41ms
+[INFO] SCM revision ID '188925b99b626144ff502c08ba3d06ffce608158'
+[INFO] Analysis report generated in 109ms, dir size=253.6 kB
+[INFO] Analysis report compressed in 53ms, zip size=59.2 kB
+[INFO] Analysis report uploaded in 128ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=Ejercicio5Cliente
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at http://host.docker.internal:9000/api/ce/task?id=833a74ff-3955-4c67-bf5f-648cab80e4d5
+[INFO] Analysis total time: 17.494 s
+[INFO] SonarScanner Engine completed successfully
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25.259 s
+[INFO] Finished at: 2026-11-05T17:02:25Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security Scan (SAST) - Semgrep)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mkdir -p reportes
++ docker run --rm --network bridge -v /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront:/src -w /src semgrep/semgrep semgrep scan --config=auto --exclude=target --json --output=reportes/semgrep.json .
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 75 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      61      75          Community    1074                                                                
+  js              153       8                                                                                           
+  html              1       8                                                                                           
+  java            118       7                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 20 (20 blocking)
+ • Rules run: 332
+ • Targets scanned: 75
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Files larger than  files 1.0 MB: 11
+   ◦ Files matching .semgrepignore patterns: 8
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 332 rules on 75 files: 20 findings.
+Post stage
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,7 @@
+﻿  <jdks>
+    <jdk>
+      <name>JDK21</name>
+      <home>/opt/java/openjdk</home>
+      <properties/>
+    </jdk>
+  </jdks>

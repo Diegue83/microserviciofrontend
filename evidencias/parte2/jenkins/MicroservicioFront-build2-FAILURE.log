@@ -1,0 +1,744 @@
+﻿Started by user Diego
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Diegue83/microserviciofrontend.git # timeout=10
+Fetching upstream changes from https://github.com/Diegue83/microserviciofrontend.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Diegue83/microserviciofrontend.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ERROR: Timeout after 10 minutes
+ERROR: Error fetching remote repo 'origin'
+hudson.plugins.git.GitException: Failed to fetch from https://github.com/Diegue83/microserviciofrontend.git
+	at PluginClassLoader for git//hudson.plugins.git.GitSCM.fetchFrom(GitSCM.java:1014)
+	at PluginClassLoader for git//hudson.plugins.git.GitSCM.retrieveChanges(GitSCM.java:1255)
+	at PluginClassLoader for git//hudson.plugins.git.GitSCM._checkout(GitSCM.java:1326)
+	at PluginClassLoader for git//hudson.plugins.git.GitSCM.checkout(GitSCM.java:1293)
+	at PluginClassLoader for workflow-scm-step//org.jenkinsci.plugins.workflow.steps.scm.SCMStep.checkout(SCMStep.java:136)
+	at PluginClassLoader for workflow-scm-step//org.jenkinsci.plugins.workflow.steps.scm.SCMStep$StepExecutionImpl.run(SCMStep.java:101)
+	at PluginClassLoader for workflow-scm-step//org.jenkinsci.plugins.workflow.steps.scm.SCMStep$StepExecutionImpl.run(SCMStep.java:88)
+	at PluginClassLoader for workflow-step-api//org.jenkinsci.plugins.workflow.steps.SynchronousNonBlockingStepExecution.lambda$start$0(SynchronousNonBlockingStepExecution.java:49)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: hudson.plugins.git.GitException: Command "git fetch --tags --force --progress -- https://github.com/Diegue83/microserviciofrontend.git +refs/heads/*:refs/remotes/origin/*" returned status code 128:
+stdout: 
+stderr: remote: Enumerating objects: 177, done.        
+Receiving objects:   0% (1/177)
+Receiving objects:   1% (2/177)
+Receiving objects:   2% (4/177)
+Receiving objects:   3% (6/177)
+Receiving objects:   4% (8/177)
+Receiving objects:   5% (9/177)
+Receiving objects:   6% (11/177)
+Receiving objects:   7% (13/177)
+Receiving objects:   8% (15/177)
+Receiving objects:   9% (16/177)
+Receiving objects:  10% (18/177)
+Receiving objects:  11% (20/177)
+Receiving objects:  12% (22/177)
+Receiving objects:  13% (24/177)
+Receiving objects:  14% (25/177)
+Receiving objects:  15% (27/177)
+Receiving objects:  16% (29/177)
+Receiving objects:  17% (31/177)
+Receiving objects:  18% (32/177)
+Receiving objects:  19% (34/177)
+Receiving objects:  20% (36/177)
+Receiving objects:  20% (37/177), 780.01 KiB | 758.00 KiB/s
+Receiving objects:  21% (38/177), 780.01 KiB | 758.00 KiB/s
+Receiving objects:  21% (38/177), 1.63 MiB | 780.00 KiB/s  
+Receiving objects:  21% (38/177), 2.19 MiB | 712.00 KiB/s
+Receiving objects:  21% (38/177), 2.85 MiB | 679.00 KiB/s
+Receiving objects:  21% (38/177), 3.61 MiB | 703.00 KiB/s
+Receiving objects:  21% (38/177), 4.51 MiB | 725.00 KiB/s
+Receiving objects:  21% (38/177), 5.50 MiB | 773.00 KiB/s
+Receiving objects:  21% (38/177), 6.50 MiB | 856.00 KiB/s
+Receiving objects:  21% (38/177), 7.71 MiB | 981.00 KiB/s
+Receiving objects:  21% (38/177), 9.25 MiB | 1.12 MiB/s  
+Receiving objects:  21% (38/177), 11.27 MiB | 1.32 MiB/s
+Receiving objects:  21% (38/177), 13.00 MiB | 1.58 MiB/s
+Receiving objects:  22% (39/177), 13.00 MiB | 1.58 MiB/s
+Receiving objects:  22% (40/177), 15.08 MiB | 1.81 MiB/s
+Receiving objects:  23% (41/177), 15.08 MiB | 1.81 MiB/s
+Receiving objects:  24% (43/177), 16.07 MiB | 1.89 MiB/s
+Receiving objects:  24% (43/177), 17.03 MiB | 1.96 MiB/s
+Receiving objects:  24% (44/177), 18.43 MiB | 1.93 MiB/s
+Receiving objects:  25% (45/177), 18.43 MiB | 1.93 MiB/s
+Receiving objects:  25% (46/177), 19.28 MiB | 1.72 MiB/s
+Receiving objects:  25% (46/177), 19.84 MiB | 1.26 MiB/s
+Receiving objects:  25% (46/177), 20.51 MiB | 968.00 KiB/s
+Receiving objects:  25% (46/177), 21.12 MiB | 680.00 KiB/s
+Receiving objects:  25% (46/177), 21.39 MiB | 622.00 KiB/s
+Receiving objects:  25% (46/177), 21.90 MiB | 545.00 KiB/s
+Receiving objects:  25% (46/177), 22.28 MiB | 504.00 KiB/s
+Receiving objects:  25% (46/177), 22.41 MiB | 384.00 KiB/s
+Receiving objects:  25% (46/177), 22.50 MiB | 331.00 KiB/s
+Receiving objects:  25% (46/177), 22.65 MiB | 255.00 KiB/s
+Receiving objects:  25% (46/177), 22.79 MiB | 175.00 KiB/s
+Receiving objects:  25% (46/177), 23.05 MiB | 152.00 KiB/s
+Receiving objects:  25% (46/177), 23.18 MiB | 165.00 KiB/s
+Receiving objects:  25% (46/177), 23.48 MiB | 195.00 KiB/s
+Receiving objects:  25% (46/177), 23.84 MiB | 235.00 KiB/s
+Receiving objects:  25% (46/177), 24.17 MiB | 284.00 KiB/s
+Receiving objects:  25% (46/177), 24.64 MiB | 323.00 KiB/s
+Receiving objects:  25% (46/177), 24.84 MiB | 345.00 KiB/s
+Receiving objects:  25% (46/177), 25.29 MiB | 379.00 KiB/s
+Receiving objects:  25% (46/177), 25.67 MiB | 385.00 KiB/s
+Receiving objects:  25% (46/177), 25.96 MiB | 376.00 KiB/s
+Receiving objects:  25% (46/177), 26.43 MiB | 381.00 KiB/s
+Receiving objects:  25% (46/177), 27.10 MiB | 427.00 KiB/s
+Receiving objects:  25% (46/177), 27.75 MiB | 471.00 KiB/s
+Receiving objects:  25% (46/177), 28.39 MiB | 559.00 KiB/s
+Receiving objects:  25% (46/177), 28.92 MiB | 596.00 KiB/s
+Receiving objects:  25% (46/177), 29.14 MiB | 589.00 KiB/s
+Receiving objects:  25% (46/177), 29.68 MiB | 559.00 KiB/s
+Receiving objects:  25% (46/177), 30.25 MiB | 529.00 KiB/s
+Receiving objects:  25% (46/177), 30.80 MiB | 502.00 KiB/s
+Receiving objects:  25% (46/177), 31.49 MiB | 538.00 KiB/s
+Receiving objects:  25% (46/177), 32.35 MiB | 613.00 KiB/s
+Receiving objects:  25% (46/177), 33.30 MiB | 733.00 KiB/s
+Receiving objects:  25% (46/177), 34.19 MiB | 814.00 KiB/s
+Receiving objects:  25% (46/177), 35.36 MiB | 939.00 KiB/s
+Receiving objects:  25% (46/177), 36.10 MiB | 1020.00 KiB/s
+Receiving objects:  25% (46/177), 37.11 MiB | 996.00 KiB/s 
+Receiving objects:  25% (46/177), 38.02 MiB | 984.00 KiB/s
+Receiving objects:  25% (46/177), 38.98 MiB | 1003.00 KiB/s
+Receiving objects:  25% (46/177), 39.19 MiB | 875.00 KiB/s 
+Receiving objects:  25% (46/177), 39.80 MiB | 734.00 KiB/s
+Receiving objects:  25% (46/177), 40.10 MiB | 617.00 KiB/s
+Receiving objects:  25% (46/177), 40.60 MiB | 531.00 KiB/s
+Receiving objects:  25% (46/177), 41.13 MiB | 438.00 KiB/s
+Receiving objects:  25% (46/177), 41.71 MiB | 448.00 KiB/s
+Receiving objects:  25% (46/177), 42.05 MiB | 476.00 KiB/s
+Receiving objects:  25% (46/177), 42.60 MiB | 534.00 KiB/s
+Receiving objects:  25% (46/177), 43.10 MiB | 537.00 KiB/s
+Receiving objects:  25% (46/177), 43.71 MiB | 553.00 KiB/s
+Receiving objects:  25% (46/177), 44.46 MiB | 592.00 KiB/s
+Receiving objects:  25% (46/177), 44.95 MiB | 555.00 KiB/s
+Receiving objects:  25% (46/177), 45.50 MiB | 575.00 KiB/s
+Receiving objects:  25% (46/177), 45.90 MiB | 569.00 KiB/s
+Receiving objects:  25% (46/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  26% (47/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  27% (48/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  28% (50/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  29% (52/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  30% (54/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  31% (55/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  32% (57/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  33% (59/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  34% (61/177), 46.46 MiB | 520.00 KiB/s
+Receiving objects:  35% (62/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  36% (64/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  37% (66/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  38% (68/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  39% (70/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  40% (71/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  41% (73/177), 46.73 MiB | 494.00 KiB/s
+Receiving objects:  42% (75/177), 47.06 MiB | 480.00 KiB/s
+Receiving objects:  42% (75/177), 47.71 MiB | 535.00 KiB/s
+Receiving objects:  42% (75/177), 48.54 MiB | 621.00 KiB/s
+Receiving objects:  42% (75/177), 48.98 MiB | 673.00 KiB/s
+Receiving objects:  42% (75/177), 49.82 MiB | 744.00 KiB/s
+Receiving objects:  42% (75/177), 50.87 MiB | 821.00 KiB/s
+Receiving objects:  42% (75/177), 51.50 MiB | 801.00 KiB/s
+Receiving objects:  42% (75/177), 51.90 MiB | 709.00 KiB/s
+Receiving objects:  42% (75/177), 52.31 MiB | 618.00 KiB/s
+Receiving objects:  42% (75/177), 52.56 MiB | 464.00 KiB/s
+Receiving objects:  42% (75/177), 52.93 MiB | 377.00 KiB/s
+Receiving objects:  42% (75/177), 53.18 MiB | 365.00 KiB/s
+Receiving objects:  42% (75/177), 53.61 MiB | 367.00 KiB/s
+Receiving objects:  42% (75/177), 54.17 MiB | 399.00 KiB/s
+Receiving objects:  42% (75/177), 54.69 MiB | 457.00 KiB/s
+Receiving objects:  42% (75/177), 55.26 MiB | 486.00 KiB/s
+Receiving objects:  42% (75/177), 55.61 MiB | 463.00 KiB/s
+Receiving objects:  42% (75/177), 55.95 MiB | 438.00 KiB/s
+Receiving objects:  42% (75/177), 56.28 MiB | 442.00 KiB/s
+Receiving objects:  42% (75/177), 56.82 MiB | 444.00 KiB/s
+Receiving objects:  42% (75/177), 57.36 MiB | 446.00 KiB/s
+Receiving objects:  42% (75/177), 57.98 MiB | 505.00 KiB/s
+Receiving objects:  42% (75/177), 58.43 MiB | 523.00 KiB/s
+Receiving objects:  42% (75/177), 59.09 MiB | 521.00 KiB/s
+Receiving objects:  42% (75/177), 59.36 MiB | 522.00 KiB/s
+Receiving objects:  42% (75/177), 59.82 MiB | 506.00 KiB/s
+Receiving objects:  42% (75/177), 60.27 MiB | 474.00 KiB/s
+Receiving objects:  42% (75/177), 60.85 MiB | 501.00 KiB/s
+Receiving objects:  42% (75/177), 61.51 MiB | 521.00 KiB/s
+Receiving objects:  42% (75/177), 62.21 MiB | 557.00 KiB/s
+Receiving objects:  42% (75/177), 62.88 MiB | 600.00 KiB/s
+Receiving objects:  42% (75/177), 63.29 MiB | 637.00 KiB/s
+Receiving objects:  42% (75/177), 64.02 MiB | 673.00 KiB/s
+Receiving objects:  42% (75/177), 64.88 MiB | 715.00 KiB/s
+Receiving objects:  42% (75/177), 65.88 MiB | 803.00 KiB/s
+Receiving objects:  42% (75/177), 66.77 MiB | 843.00 KiB/s
+Receiving objects:  42% (75/177), 67.50 MiB | 835.00 KiB/s
+Receiving objects:  42% (75/177), 68.18 MiB | 801.00 KiB/s
+Receiving objects:  42% (75/177), 68.90 MiB | 748.00 KiB/s
+Receiving objects:  42% (75/177), 69.19 MiB | 686.00 KiB/s
+Receiving objects:  42% (75/177), 69.88 MiB | 641.00 KiB/s
+Receiving objects:  42% (75/177), 70.37 MiB | 582.00 KiB/s
+Receiving objects:  42% (75/177), 70.61 MiB | 554.00 KiB/s
+Receiving objects:  42% (75/177), 71.05 MiB | 503.00 KiB/s
+Receiving objects:  42% (75/177), 71.63 MiB | 492.00 KiB/s
+Receiving objects:  42% (75/177), 72.25 MiB | 475.00 KiB/s
+Receiving objects:  42% (75/177), 72.91 MiB | 521.00 KiB/s
+Receiving objects:  42% (75/177), 73.48 MiB | 564.00 KiB/s
+Receiving objects:  42% (75/177), 74.17 MiB | 603.00 KiB/s
+Receiving objects:  42% (75/177), 74.93 MiB | 687.00 KiB/s
+Receiving objects:  42% (75/177), 75.73 MiB | 700.00 KiB/s
+Receiving objects:  42% (75/177), 76.21 MiB | 731.00 KiB/s
+Receiving objects:  42% (75/177), 77.12 MiB | 785.00 KiB/s
+Receiving objects:  42% (75/177), 77.78 MiB | 770.00 KiB/s
+Receiving objects:  42% (75/177), 78.26 MiB | 707.00 KiB/s
+Receiving objects:  42% (75/177), 78.73 MiB | 632.00 KiB/s
+Receiving objects:  42% (75/177), 79.20 MiB | 563.00 KiB/s
+Receiving objects:  42% (75/177), 79.71 MiB | 472.00 KiB/s
+Receiving objects:  42% (75/177), 80.29 MiB | 489.00 KiB/s
+Receiving objects:  42% (75/177), 81.04 MiB | 553.00 KiB/s
+Receiving objects:  42% (75/177), 81.94 MiB | 656.00 KiB/s
+Receiving objects:  42% (75/177), 83.01 MiB | 797.00 KiB/s
+Receiving objects:  42% (75/177), 83.54 MiB | 856.00 KiB/s
+Receiving objects:  42% (75/177), 84.17 MiB | 852.00 KiB/s
+Receiving objects:  42% (75/177), 84.60 MiB | 785.00 KiB/s
+Receiving objects:  42% (75/177), 85.06 MiB | 680.00 KiB/s
+Receiving objects:  42% (75/177), 85.64 MiB | 570.00 KiB/s
+Receiving objects:  42% (75/177), 86.37 MiB | 528.00 KiB/s
+Receiving objects:  42% (75/177), 87.22 MiB | 626.00 KiB/s
+Receiving objects:  42% (75/177), 88.22 MiB | 743.00 KiB/s
+Receiving objects:  42% (75/177), 89.27 MiB | 864.00 KiB/s
+Receiving objects:  42% (75/177), 89.74 MiB | 821.00 KiB/s
+Receiving objects:  42% (75/177), 90.60 MiB | 840.00 KiB/s
+Receiving objects:  42% (75/177), 91.55 MiB | 847.00 KiB/s
+Receiving objects:  42% (75/177), 92.02 MiB | 830.00 KiB/s
+Receiving objects:  42% (75/177), 92.96 MiB | 793.00 KiB/s
+Receiving objects:  42% (75/177), 93.90 MiB | 907.00 KiB/s
+Receiving objects:  42% (75/177), 94.49 MiB | 592.00 KiB/s
+Receiving objects:  42% (75/177), 95.04 MiB | 527.00 KiB/s
+Receiving objects:  42% (75/177), 96.00 MiB | 513.00 KiB/s
+Receiving objects:  42% (75/177), 97.07 MiB | 539.00 KiB/s
+Receiving objects:  42% (75/177), 98.04 MiB | 570.00 KiB/s
+Receiving objects:  42% (75/177), 99.08 MiB | 960.00 KiB/s
+Receiving objects:  42% (75/177), 100.32 MiB | 1.04 MiB/s 
+Receiving objects:  42% (75/177), 101.48 MiB | 1.06 MiB/s
+Receiving objects:  42% (75/177), 102.01 MiB | 1.07 MiB/s
+Receiving objects:  42% (75/177), 102.89 MiB | 1.04 MiB/s
+Receiving objects:  42% (75/177), 103.86 MiB | 1.00 MiB/s
+Receiving objects:  42% (75/177), 104.82 MiB | 969.00 KiB/s
+Receiving objects:  42% (75/177), 105.54 MiB | 860.00 KiB/s
+Receiving objects:  42% (75/177), 106.08 MiB | 770.00 KiB/s
+Receiving objects:  42% (75/177), 106.64 MiB | 682.00 KiB/s
+Receiving objects:  42% (75/177), 107.26 MiB | 617.00 KiB/s
+Receiving objects:  42% (75/177), 108.15 MiB | 644.00 KiB/s
+Receiving objects:  42% (75/177), 109.07 MiB | 715.00 KiB/s
+Receiving objects:  42% (75/177), 109.87 MiB | 782.00 KiB/s
+Receiving objects:  42% (75/177), 110.34 MiB | 827.00 KiB/s
+Receiving objects:  42% (75/177), 111.36 MiB | 920.00 KiB/s
+Receiving objects:  42% (75/177), 112.48 MiB | 972.00 KiB/s
+Receiving objects:  42% (75/177), 113.66 MiB | 1.01 MiB/s  
+Receiving objects:  42% (75/177), 115.02 MiB | 1.13 MiB/s
+Receiving objects:  42% (75/177), 116.49 MiB | 1.23 MiB/s
+Receiving objects:  42% (76/177), 117.89 MiB | 1.31 MiB/s
+Receiving objects:  43% (77/177), 117.89 MiB | 1.31 MiB/s
+Receiving objects:  43% (77/177), 118.99 MiB | 1.28 MiB/s
+Receiving objects:  43% (77/177), 120.04 MiB | 1.24 MiB/s
+Receiving objects:  43% (77/177), 121.14 MiB | 1.18 MiB/s
+Receiving objects:  43% (77/177), 122.21 MiB | 1.07 MiB/s
+Receiving objects:  43% (77/177), 123.12 MiB | 1021.00 KiB/s
+Receiving objects:  43% (77/177), 123.81 MiB | 949.00 KiB/s 
+Receiving objects:  43% (77/177), 124.49 MiB | 857.00 KiB/s
+Receiving objects:  43% (77/177), 125.32 MiB | 805.00 KiB/s
+Receiving objects:  43% (77/177), 126.44 MiB | 789.00 KiB/s
+Receiving objects:  43% (77/177), 127.50 MiB | 855.00 KiB/s
+Receiving objects:  43% (77/177), 128.04 MiB | 904.00 KiB/s
+Receiving objects:  43% (77/177), 129.37 MiB | 1.03 MiB/s  
+Receiving objects:  43% (77/177), 130.84 MiB | 1.18 MiB/s
+Receiving objects:  43% (77/177), 132.63 MiB | 1.34 MiB/s
+Receiving objects:  43% (77/177), 133.71 MiB | 1.33 MiB/s
+Receiving objects:  43% (77/177), 134.79 MiB | 1.31 MiB/s
+Receiving objects:  43% (77/177), 135.78 MiB | 1.23 MiB/s
+Receiving objects:  43% (77/177), 136.84 MiB | 1.11 MiB/s
+Receiving objects:  43% (77/177), 137.90 MiB | 1.03 MiB/s
+Receiving objects:  44% (78/177), 138.50 MiB | 1.04 MiB/s
+Receiving objects:  44% (78/177), 139.11 MiB | 1.05 MiB/s
+Receiving objects:  45% (80/177), 139.11 MiB | 1.05 MiB/s
+Receiving objects:  45% (81/177), 140.61 MiB | 1.15 MiB/s
+Receiving objects:  45% (81/177), 141.46 MiB | 1.11 MiB/s
+Receiving objects:  45% (81/177), 142.43 MiB | 1.11 MiB/s
+Receiving objects:  45% (81/177), 143.02 MiB | 1005.00 KiB/s
+Receiving objects:  45% (81/177), 143.54 MiB | 810.00 KiB/s 
+Receiving objects:  45% (81/177), 143.72 MiB | 683.00 KiB/s
+Receiving objects:  45% (81/177), 144.18 MiB | 592.00 KiB/s
+Receiving objects:  45% (81/177), 144.75 MiB | 506.00 KiB/s
+Receiving objects:  45% (81/177), 145.43 MiB | 524.00 KiB/s
+Receiving objects:  45% (81/177), 146.08 MiB | 545.00 KiB/s
+Receiving objects:  45% (81/177), 146.51 MiB | 537.00 KiB/s
+Receiving objects:  45% (81/177), 146.94 MiB | 521.00 KiB/s
+Receiving objects:  45% (81/177), 147.54 MiB | 507.00 KiB/s
+Receiving objects:  45% (81/177), 147.86 MiB | 503.00 KiB/s
+Receiving objects:  45% (81/177), 148.49 MiB | 510.00 KiB/s
+Receiving objects:  45% (81/177), 148.85 MiB | 496.00 KiB/s
+Receiving objects:  45% (81/177), 149.21 MiB | 474.00 KiB/s
+Receiving objects:  45% (81/177), 149.74 MiB | 457.00 KiB/s
+Receiving objects:  45% (81/177), 150.25 MiB | 438.00 KiB/s
+Receiving objects:  45% (81/177), 150.56 MiB | 432.00 KiB/s
+Receiving objects:  45% (81/177), 151.04 MiB | 450.00 KiB/s
+Receiving objects:  45% (81/177), 151.27 MiB | 445.00 KiB/s
+Receiving objects:  45% (81/177), 151.58 MiB | 412.00 KiB/s
+Receiving objects:  45% (81/177), 151.99 MiB | 392.00 KiB/s
+Receiving objects:  45% (81/177), 152.54 MiB | 383.00 KiB/s
+Receiving objects:  45% (81/177), 153.24 MiB | 444.00 KiB/s
+Receiving objects:  45% (81/177), 153.67 MiB | 484.00 KiB/s
+Receiving objects:  45% (81/177), 153.96 MiB | 470.00 KiB/s
+Receiving objects:  45% (81/177), 154.08 MiB | 445.00 KiB/s
+Receiving objects:  45% (81/177), 154.33 MiB | 385.00 KiB/s
+Receiving objects:  45% (81/177), 154.68 MiB | 305.00 KiB/s
+Receiving objects:  45% (81/177), 155.11 MiB | 306.00 KiB/s
+Receiving objects:  45% (81/177), 155.61 MiB | 350.00 KiB/s
+Receiving objects:  45% (81/177), 156.14 MiB | 392.00 KiB/s
+Receiving objects:  45% (81/177), 156.31 MiB | 403.00 KiB/s
+Receiving objects:  45% (81/177), 156.61 MiB | 397.00 KiB/s
+Receiving objects:  45% (81/177), 156.98 MiB | 374.00 KiB/s
+Receiving objects:  45% (81/177), 157.31 MiB | 337.00 KiB/s
+Receiving objects:  45% (81/177), 157.54 MiB | 279.00 KiB/s
+Receiving objects:  45% (81/177), 157.78 MiB | 289.00 KiB/s
+Receiving objects:  45% (81/177), 157.86 MiB | 262.00 KiB/s
+Receiving objects:  45% (81/177), 157.99 MiB | 213.00 KiB/s
+Receiving objects:  45% (81/177), 158.18 MiB | 196.00 KiB/s
+Receiving objects:  45% (81/177), 158.56 MiB | 212.00 KiB/s
+Receiving objects:  45% (81/177), 158.78 MiB | 195.00 KiB/s
+Receiving objects:  45% (81/177), 158.98 MiB | 230.00 KiB/s
+Receiving objects:  45% (81/177), 159.45 MiB | 307.00 KiB/s
+Receiving objects:  45% (81/177), 160.07 MiB | 397.00 KiB/s
+Receiving objects:  45% (81/177), 160.77 MiB | 479.00 KiB/s
+Receiving objects:  45% (81/177), 161.65 MiB | 630.00 KiB/s
+Receiving objects:  45% (81/177), 162.57 MiB | 742.00 KiB/s
+Receiving objects:  45% (81/177), 163.48 MiB | 815.00 KiB/s
+Receiving objects:  45% (81/177), 164.59 MiB | 924.00 KiB/s
+Receiving objects:  45% (81/177), 165.54 MiB | 957.00 KiB/s
+Receiving objects:  45% (81/177), 165.91 MiB | 827.00 KiB/s
+Receiving objects:  45% (81/177), 166.28 MiB | 689.00 KiB/s
+Receiving objects:  45% (81/177), 166.70 MiB | 576.00 KiB/s
+Receiving objects:  45% (81/177), 166.85 MiB | 480.00 KiB/s
+Receiving objects:  45% (81/177), 167.15 MiB | 340.00 KiB/s
+Receiving objects:  45% (81/177), 167.48 MiB | 330.00 KiB/s
+Receiving objects:  45% (81/177), 167.70 MiB | 300.00 KiB/s
+Receiving objects:  45% (81/177), 167.89 MiB | 252.00 KiB/s
+Receiving objects:  45% (81/177), 168.20 MiB | 256.00 KiB/s
+Receiving objects:  45% (81/177), 168.37 MiB | 257.00 KiB/s
+Receiving objects:  45% (81/177), 168.51 MiB | 221.00 KiB/s
+Receiving objects:  45% (81/177), 168.71 MiB | 216.00 KiB/s
+Receiving objects:  45% (81/177), 168.89 MiB | 202.00 KiB/s
+Receiving objects:  45% (81/177), 168.96 MiB | 184.00 KiB/s
+Receiving objects:  45% (81/177), 169.05 MiB | 132.00 KiB/s
+Receiving objects:  45% (81/177), 169.13 MiB | 115.00 KiB/s
+Receiving objects:  45% (81/177), 169.16 MiB | 105.00 KiB/s
+Receiving objects:  45% (81/177), 169.24 MiB | 74.00 KiB/s 
+Receiving objects:  45% (81/177), 169.29 MiB | 70.00 KiB/s
+Receiving objects:  45% (81/177), 169.38 MiB | 69.00 KiB/s
+Receiving objects:  45% (81/177), 169.39 MiB | 58.00 KiB/s
+Receiving objects:  45% (81/177), 169.43 MiB | 55.00 KiB/s
+Receiving objects:  45% (81/177), 169.47 MiB | 53.00 KiB/s
+Receiving objects:  45% (81/177), 169.55 MiB | 53.00 KiB/s
+Receiving objects:  45% (81/177), 169.59 MiB | 43.00 KiB/s
+Receiving objects:  45% (81/177), 169.61 MiB | 31.00 KiB/s
+Receiving objects:  45% (81/177), 169.64 MiB | 31.00 KiB/s
+Receiving objects:  45% (81/177), 169.68 MiB | 32.00 KiB/s
+Receiving objects:  45% (81/177), 169.69 MiB | 28.00 KiB/s
+Receiving objects:  45% (81/177), 169.71 MiB | 25.00 KiB/s
+Receiving objects:  45% (81/177), 169.72 MiB | 21.00 KiB/s
+Receiving objects:  45% (81/177), 169.75 MiB | 21.00 KiB/s
+Receiving objects:  45% (81/177), 169.77 MiB | 20.00 KiB/s
+Receiving objects:  45% (81/177), 169.79 MiB | 20.00 KiB/s
+Receiving objects:  45% (81/177), 169.85 MiB | 24.00 KiB/s
+Receiving objects:  45% (81/177), 169.90 MiB | 27.00 KiB/s
+Receiving objects:  45% (81/177), 169.95 MiB | 34.00 KiB/s
+Receiving objects:  45% (81/177), 170.02 MiB | 43.00 KiB/s
+Receiving objects:  45% (81/177), 170.11 MiB | 53.00 KiB/s
+Receiving objects:  45% (81/177), 170.25 MiB | 78.00 KiB/s
+Receiving objects:  45% (81/177), 170.32 MiB | 80.00 KiB/s
+Receiving objects:  45% (81/177), 170.38 MiB | 79.00 KiB/s
+Receiving objects:  45% (81/177), 170.39 MiB | 73.00 KiB/s
+Receiving objects:  45% (81/177), 170.46 MiB | 66.00 KiB/s
+Receiving objects:  45% (81/177), 170.50 MiB | 42.00 KiB/s
+Receiving objects:  45% (81/177), 170.53 MiB | 37.00 KiB/s
+Receiving objects:  45% (81/177), 170.57 MiB | 35.00 KiB/s
+Receiving objects:  45% (81/177), 170.64 MiB | 38.00 KiB/s
+Receiving objects:  45% (81/177), 170.74 MiB | 49.00 KiB/s
+Receiving objects:  45% (81/177), 170.77 MiB | 44.00 KiB/s
+Receiving objects:  45% (81/177), 170.84 MiB | 56.00 KiB/s
+Receiving objects:  45% (81/177), 170.86 MiB | 50.00 KiB/s
+Receiving objects:  45% (81/177), 170.96 MiB | 62.00 KiB/s
+Receiving objects:  45% (81/177), 171.10 MiB | 81.00 KiB/s
+Receiving objects:  45% (81/177), 171.22 MiB | 85.00 KiB/s
+Receiving objects:  45% (81/177), 171.35 MiB | 96.00 KiB/s
+Receiving objects:  45% (81/177), 171.41 MiB | 97.00 KiB/s
+Receiving objects:  45% (81/177), 171.57 MiB | 110.00 KiB/s
+Receiving objects:  45% (81/177), 171.61 MiB | 108.00 KiB/s
+Receiving objects:  45% (81/177), 171.66 MiB | 85.00 KiB/s 
+Receiving objects:  45% (81/177), 171.69 MiB | 82.00 KiB/s
+Receiving objects:  45% (81/177), 171.80 MiB | 76.00 KiB/s
+Receiving objects:  45% (81/177), 171.85 MiB | 74.00 KiB/s
+Receiving objects:  45% (81/177), 171.97 MiB | 72.00 KiB/s
+Receiving objects:  45% (81/177), 172.00 MiB | 67.00 KiB/s
+Receiving objects:  45% (81/177), 172.11 MiB | 78.00 KiB/s
+Receiving objects:  45% (81/177), 172.21 MiB | 88.00 KiB/s
+Receiving objects:  45% (81/177), 172.36 MiB | 102.00 KiB/s
+Receiving objects:  45% (81/177), 172.52 MiB | 108.00 KiB/s
+Receiving objects:  45% (81/177), 172.71 MiB | 135.00 KiB/s
+Receiving objects:  45% (81/177), 172.86 MiB | 155.00 KiB/s
+Receiving objects:  45% (81/177), 173.18 MiB | 184.00 KiB/s
+Receiving objects:  45% (81/177), 173.36 MiB | 208.00 KiB/s
+Receiving objects:  45% (81/177), 173.73 MiB | 250.00 KiB/s
+Receiving objects:  45% (81/177), 174.14 MiB | 295.00 KiB/s
+Receiving objects:  45% (81/177), 174.70 MiB | 370.00 KiB/s
+Receiving objects:  45% (81/177), 175.16 MiB | 421.00 KiB/s
+Receiving objects:  45% (81/177), 175.52 MiB | 420.00 KiB/s
+Receiving objects:  45% (81/177), 175.83 MiB | 407.00 KiB/s
+Receiving objects:  45% (81/177), 176.19 MiB | 386.00 KiB/s
+Receiving objects:  45% (81/177), 176.52 MiB | 350.00 KiB/s
+Receiving objects:  45% (81/177), 176.66 MiB | 314.00 KiB/s
+Receiving objects:  45% (81/177), 177.08 MiB | 325.00 KiB/s
+Receiving objects:  45% (81/177), 177.51 MiB | 344.00 KiB/s
+Receiving objects:  45% (81/177), 178.09 MiB | 390.00 KiB/s
+Receiving objects:  45% (81/177), 178.64 MiB | 441.00 KiB/s
+Receiving objects:  45% (81/177), 179.21 MiB | 489.00 KiB/s
+Receiving objects:  45% (81/177), 179.46 MiB | 495.00 KiB/s
+Receiving objects:  45% (81/177), 179.94 MiB | 507.00 KiB/s
+Receiving objects:  45% (81/177), 180.74 MiB | 554.00 KiB/s
+Receiving objects:  45% (81/177), 181.68 MiB | 630.00 KiB/s
+Receiving objects:  45% (81/177), 182.55 MiB | 699.00 KiB/s
+Receiving objects:  45% (81/177), 183.39 MiB | 812.00 KiB/s
+Receiving objects:  45% (81/177), 184.45 MiB | 905.00 KiB/s
+Receiving objects:  45% (81/177), 185.57 MiB | 962.00 KiB/s
+Receiving objects:  45% (81/177), 186.12 MiB | 985.00 KiB/s
+Receiving objects:  45% (81/177), 187.36 MiB | 1.05 MiB/s  
+Receiving objects:  45% (81/177), 188.34 MiB | 1.08 MiB/s
+Receiving objects:  45% (81/177), 189.62 MiB | 1.13 MiB/s
+Receiving objects:  45% (81/177), 190.93 MiB | 1.17 MiB/s
+Receiving objects:  45% (81/177), 192.31 MiB | 1.21 MiB/s
+Receiving objects:  45% (81/177), 193.73 MiB | 1.25 MiB/s
+Receiving objects:  45% (81/177), 195.09 MiB | 1.29 MiB/s
+Receiving objects:  45% (81/177), 196.45 MiB | 1.31 MiB/s
+Receiving objects:  45% (81/177), 197.97 MiB | 1.32 MiB/s
+Receiving objects:  45% (81/177), 198.61 MiB | 1.25 MiB/s
+Receiving objects:  45% (81/177), 199.07 MiB | 1.05 MiB/s
+Receiving objects:  45% (81/177), 199.45 MiB | 850.00 KiB/s
+Receiving objects:  45% (81/177), 199.54 MiB | 707.00 KiB/s
+Receiving objects:  45% (81/177), 199.74 MiB | 469.00 KiB/s
+Receiving objects:  45% (81/177), 200.09 MiB | 291.00 KiB/s
+Receiving objects:  45% (81/177), 200.31 MiB | 277.00 KiB/s
+Receiving objects:  45% (81/177), 200.71 MiB | 273.00 KiB/s
+Receiving objects:  45% (81/177), 200.97 MiB | 283.00 KiB/s
+Receiving objects:  45% (81/177), 201.17 MiB | 304.00 KiB/s
+Receiving objects:  45% (81/177), 201.44 MiB | 304.00 KiB/s
+Receiving objects:  45% (81/177), 201.74 MiB | 273.00 KiB/s
+Receiving objects:  45% (81/177), 201.93 MiB | 228.00 KiB/s
+Receiving objects:  45% (81/177), 202.04 MiB | 222.00 KiB/s
+Receiving objects:  45% (81/177), 202.19 MiB | 199.00 KiB/s
+Receiving objects:  45% (81/177), 202.39 MiB | 186.00 KiB/s
+Receiving objects:  45% (81/177), 202.71 MiB | 199.00 KiB/s
+Receiving objects:  45% (81/177), 203.03 MiB | 225.00 KiB/s
+Receiving objects:  45% (81/177), 203.16 MiB | 235.00 KiB/s
+Receiving objects:  45% (81/177), 203.38 MiB | 244.00 KiB/s
+Receiving objects:  45% (81/177), 203.69 MiB | 264.00 KiB/s
+Receiving objects:  45% (81/177), 204.00 MiB | 256.00 KiB/s
+Receiving objects:  45% (81/177), 204.11 MiB | 245.00 KiB/s
+Receiving objects:  45% (81/177), 204.41 MiB | 252.00 KiB/s
+Receiving objects:  45% (81/177), 204.72 MiB | 269.00 KiB/s
+Receiving objects:  45% (81/177), 204.99 MiB | 260.00 KiB/s
+Receiving objects:  45% (81/177), 205.12 MiB | 254.00 KiB/s
+Receiving objects:  45% (81/177), 205.49 MiB | 277.00 KiB/s
+Receiving objects:  45% (81/177), 205.86 MiB | 292.00 KiB/s
+Receiving objects:  45% (81/177), 206.33 MiB | 332.00 KiB/s
+Receiving objects:  45% (81/177), 206.63 MiB | 331.00 KiB/s
+Receiving objects:  45% (81/177), 206.77 MiB | 339.00 KiB/s
+Receiving objects:  45% (81/177), 206.99 MiB | 300.00 KiB/s
+Receiving objects:  45% (81/177), 207.16 MiB | 263.00 KiB/s
+Receiving objects:  45% (81/177), 207.35 MiB | 204.00 KiB/s
+Receiving objects:  45% (81/177), 207.64 MiB | 208.00 KiB/s
+Receiving objects:  45% (81/177), 207.74 MiB | 199.00 KiB/s
+Receiving objects:  45% (81/177), 208.16 MiB | 249.00 KiB/s
+Receiving objects:  45% (81/177), 208.50 MiB | 287.00 KiB/s
+Receiving objects:  45% (81/177), 208.83 MiB | 320.00 KiB/s
+Receiving objects:  45% (81/177), 209.11 MiB | 322.00 KiB/s
+Receiving objects:  45% (81/177), 209.36 MiB | 300.00 KiB/s
+Receiving objects:  45% (81/177), 209.83 MiB | 309.00 KiB/s
+Receiving objects:  45% (81/177), 210.13 MiB | 341.00 KiB/s
+Receiving objects:  45% (81/177), 210.75 MiB | 404.00 KiB/s
+Receiving objects:  45% (81/177), 211.03 MiB | 387.00 KiB/s
+Receiving objects:  45% (81/177), 211.31 MiB | 407.00 KiB/s
+Receiving objects:  45% (81/177), 211.69 MiB | 395.00 KiB/s
+Receiving objects:  45% (81/177), 212.14 MiB | 344.00 KiB/s
+Receiving objects:  45% (81/177), 212.35 MiB | 321.00 KiB/s
+Receiving objects:  45% (81/177), 212.70 MiB | 336.00 KiB/s
+Receiving objects:  45% (81/177), 213.01 MiB | 340.00 KiB/s
+Receiving objects:  45% (81/177), 213.37 MiB | 333.00 KiB/s
+Receiving objects:  45% (81/177), 213.49 MiB | 303.00 KiB/s
+Receiving objects:  45% (81/177), 213.96 MiB | 330.00 KiB/s
+Receiving objects:  45% (81/177), 214.23 MiB | 320.00 KiB/s
+Receiving objects:  45% (81/177), 214.40 MiB | 293.00 KiB/s
+Receiving objects:  45% (81/177), 214.76 MiB | 293.00 KiB/s
+Receiving objects:  45% (81/177), 215.23 MiB | 323.00 KiB/s
+Receiving objects:  45% (81/177), 215.62 MiB | 325.00 KiB/s
+Receiving objects:  45% (81/177), 215.98 MiB | 369.00 KiB/s
+Receiving objects:  46% (82/177), 215.98 MiB | 369.00 KiB/s
+Receiving objects:  46% (82/177), 216.23 MiB | 394.00 KiB/s
+Receiving objects:  47% (84/177), 216.51 MiB | 419.00 KiB/s
+Receiving objects:  48% (85/177), 216.51 MiB | 419.00 KiB/s
+Receiving objects:  48% (86/177), 216.81 MiB | 441.00 KiB/s
+Receiving objects:  48% (86/177), 217.50 MiB | 496.00 KiB/s
+Receiving objects:  48% (86/177), 218.00 MiB | 515.00 KiB/s
+Receiving objects:  48% (86/177), 218.57 MiB | 560.00 KiB/s
+Receiving objects:  48% (86/177), 219.21 MiB | 591.00 KiB/s
+Receiving objects:  48% (86/177), 219.87 MiB | 586.00 KiB/s
+Receiving objects:  48% (86/177), 220.43 MiB | 572.00 KiB/s
+Receiving objects:  48% (86/177), 220.73 MiB | 514.00 KiB/s
+Receiving objects:  48% (86/177), 220.93 MiB | 437.00 KiB/s
+Receiving objects:  48% (86/177), 221.06 MiB | 380.00 KiB/s
+Receiving objects:  48% (86/177), 221.21 MiB | 258.00 KiB/s
+Receiving objects:  48% (86/177), 221.28 MiB | 215.00 KiB/s
+Receiving objects:  48% (86/177), 221.45 MiB | 167.00 KiB/s
+Receiving objects:  48% (86/177), 221.75 MiB | 169.00 KiB/s
+Receiving objects:  48% (86/177), 222.20 MiB | 224.00 KiB/s
+Receiving objects:  48% (86/177), 222.64 MiB | 298.00 KiB/s
+Receiving objects:  48% (86/177), 222.90 MiB | 339.00 KiB/s
+Receiving objects:  48% (86/177), 223.46 MiB | 434.00 KiB/s
+Receiving objects:  48% (86/177), 224.04 MiB | 492.00 KiB/s
+Receiving objects:  48% (86/177), 224.61 MiB | 517.00 KiB/s
+Receiving objects:  48% (86/177), 225.16 MiB | 541.00 KiB/s
+Receiving objects:  48% (86/177), 225.58 MiB | 514.00 KiB/s
+Receiving objects:  48% (86/177), 226.16 MiB | 468.00 KiB/s
+Receiving objects:  48% (86/177), 226.30 MiB | 429.00 KiB/s
+Receiving objects:  48% (86/177), 226.38 MiB | 379.00 KiB/s
+Receiving objects:  48% (86/177), 226.65 MiB | 325.00 KiB/s
+Receiving objects:  48% (86/177), 226.94 MiB | 287.00 KiB/s
+Receiving objects:  48% (86/177), 227.11 MiB | 275.00 KiB/s
+Receiving objects:  48% (86/177), 227.37 MiB | 232.00 KiB/s
+Receiving objects:  48% (86/177), 227.50 MiB | 224.00 KiB/s
+Receiving objects:  48% (86/177), 227.75 MiB | 227.00 KiB/s
+Receiving objects:  48% (86/177), 227.97 MiB | 208.00 KiB/s
+Receiving objects:  48% (86/177), 228.08 MiB | 195.00 KiB/s
+Receiving objects:  48% (86/177), 228.41 MiB | 210.00 KiB/s
+Receiving objects:  48% (86/177), 228.79 MiB | 266.00 KiB/s
+Receiving objects:  48% (86/177), 228.93 MiB | 240.00 KiB/s
+Receiving objects:  48% (86/177), 229.38 MiB | 296.00 KiB/s
+Receiving objects:  48% (86/177), 229.85 MiB | 337.00 KiB/s
+Receiving objects:  48% (86/177), 230.02 MiB | 339.00 KiB/s
+Receiving objects:  48% (86/177), 230.43 MiB | 341.00 KiB/s
+Receiving objects:  48% (86/177), 230.74 MiB | 387.00 KiB/s
+Receiving objects:  48% (86/177), 231.13 MiB | 368.00 KiB/s
+Receiving objects:  48% (86/177), 231.46 MiB | 339.00 KiB/s
+Receiving objects:  48% (86/177), 231.84 MiB | 348.00 KiB/s
+Receiving objects:  48% (86/177), 232.25 MiB | 357.00 KiB/s
+Receiving objects:  48% (86/177), 232.63 MiB | 361.00 KiB/s
+Receiving objects:  48% (86/177), 233.00 MiB | 360.00 KiB/s
+Receiving objects:  48% (86/177), 233.18 MiB | 367.00 KiB/s
+Receiving objects:  48% (86/177), 233.57 MiB | 366.00 KiB/s
+Receiving objects:  48% (86/177), 233.96 MiB | 361.00 KiB/s
+Receiving objects:  48% (86/177), 234.55 MiB | 410.00 KiB/s
+Receiving objects:  48% (86/177), 235.28 MiB | 484.00 KiB/s
+Receiving objects:  48% (86/177), 236.10 MiB | 592.00 KiB/s
+Receiving objects:  48% (86/177), 236.71 MiB | 649.00 KiB/s
+Receiving objects:  48% (86/177), 237.31 MiB | 641.00 KiB/s
+Receiving objects:  48% (86/177), 237.61 MiB | 632.00 KiB/s
+Receiving objects:  48% (86/177), 238.28 MiB | 634.00 KiB/s
+Receiving objects:  48% (86/177), 238.92 MiB | 581.00 KiB/s
+Receiving objects:  48% (86/177), 239.56 MiB | 587.00 KiB/s
+Receiving objects:  48% (86/177), 239.94 MiB | 604.00 KiB/s
+Receiving objects:  48% (86/177), 240.73 MiB | 668.00 KiB/s
+Receiving objects:  48% (86/177), 241.52 MiB | 681.00 KiB/s
+Receiving objects:  48% (86/177), 242.33 MiB | 736.00 KiB/s
+Receiving objects:  48% (86/177), 243.18 MiB | 782.00 KiB/s
+Receiving objects:  48% (86/177), 243.90 MiB | 763.00 KiB/s
+Receiving objects:  48% (86/177), 244.76 MiB | 795.00 KiB/s
+Receiving objects:  48% (86/177), 245.73 MiB | 838.00 KiB/s
+Receiving objects:  48% (86/177), 246.46 MiB | 806.00 KiB/s
+Receiving objects:  48% (86/177), 247.24 MiB | 809.00 KiB/s
+Receiving objects:  48% (86/177), 247.52 MiB | 781.00 KiB/s
+Receiving objects:  48% (86/177), 248.00 MiB | 699.00 KiB/s
+Receiving objects:  48% (86/177), 248.48 MiB | 594.00 KiB/s
+Receiving objects:  48% (86/177), 248.93 MiB | 540.00 KiB/s
+Receiving objects:  48% (86/177), 249.45 MiB | 473.00 KiB/s
+Receiving objects:  48% (86/177), 250.00 MiB | 460.00 KiB/s
+Receiving objects:  48% (86/177), 250.61 MiB | 491.00 KiB/s
+Receiving objects:  48% (86/177), 250.93 MiB | 509.00 KiB/s
+Receiving objects:  48% (86/177), 251.67 MiB | 569.00 KiB/s
+Receiving objects:  48% (86/177), 252.40 MiB | 631.00 KiB/s
+Receiving objects:  48% (86/177), 253.19 MiB | 686.00 KiB/s
+Receiving objects:  48% (86/177), 253.80 MiB | 681.00 KiB/s
+Receiving objects:  48% (86/177), 254.61 MiB | 709.00 KiB/s
+Receiving objects:  48% (86/177), 255.54 MiB | 743.00 KiB/s
+Receiving objects:  48% (86/177), 256.63 MiB | 846.00 KiB/s
+Receiving objects:  48% (86/177), 257.82 MiB | 957.00 KiB/s
+Receiving objects:  48% (86/177), 259.12 MiB | 1.07 MiB/s  
+Receiving objects:  48% (86/177), 260.35 MiB | 1.14 MiB/s
+Receiving objects:  48% (86/177), 261.01 MiB | 1.17 MiB/s
+Receiving objects:  48% (86/177), 262.21 MiB | 1.18 MiB/s
+Receiving objects:  48% (86/177), 263.17 MiB | 1.12 MiB/s
+Receiving objects:  48% (86/177), 264.11 MiB | 1.03 MiB/s
+Receiving objects:  48% (86/177), 265.04 MiB | 1003.00 KiB/s
+Receiving objects:  48% (86/177), 265.97 MiB | 924.00 KiB/s 
+Receiving objects:  48% (86/177), 267.00 MiB | 919.00 KiB/s
+Receiving objects:  48% (86/177), 267.68 MiB | 890.00 KiB/s
+Receiving objects:  48% (86/177), 268.72 MiB | 924.00 KiB/s
+Receiving objects:  48% (86/177), 269.06 MiB | 884.00 KiB/s
+Receiving objects:  48% (86/177), 270.04 MiB | 872.00 KiB/s
+Receiving objects:  48% (86/177), 270.79 MiB | 809.00 KiB/s
+Receiving objects:  48% (86/177), 271.58 MiB | 830.00 KiB/s
+Receiving objects:  48% (86/177), 272.54 MiB | 808.00 KiB/s
+Receiving objects:  48% (86/177), 273.65 MiB | 897.00 KiB/s
+Receiving objects:  49% (87/177), 274.26 MiB | 922.00 KiB/s
+Receiving objects:  50% (89/177), 274.26 MiB | 922.00 KiB/s
+Receiving objects:  51% (91/177), 274.26 MiB | 922.00 KiB/s
+Receiving objects:  51% (91/177), 274.90 MiB | 963.00 KiB/s
+Receiving objects:  51% (91/177), 276.28 MiB | 1.08 MiB/s  
+Receiving objects:  51% (91/177), 277.66 MiB | 1.22 MiB/s
+Receiving objects:  51% (91/177), 279.14 MiB | 1.31 MiB/s
+Receiving objects:  51% (91/177), 280.86 MiB | 1.44 MiB/s
+Receiving objects:  51% (91/177), 283.08 MiB | 1.65 MiB/s
+Receiving objects:  51% (91/177), 284.35 MiB | 1.67 MiB/s
+Receiving objects:  51% (91/177), 286.27 MiB | 1.78 MiB/s
+Receiving objects:  51% (91/177), 287.32 MiB | 1.66 MiB/s
+Receiving objects:  51% (91/177), 288.07 MiB | 1.45 MiB/s
+Receiving objects:  51% (91/177), 288.87 MiB | 1.16 MiB/s
+Receiving objects:  51% (91/177), 289.89 MiB | 915.00 KiB/s
+Receiving objects:  51% (91/177), 291.07 MiB | 943.00 KiB/s
+Receiving objects:  51% (91/177), 291.72 MiB | 968.00 KiB/s
+Receiving objects:  51% (91/177), 293.09 MiB | 1.08 MiB/s  
+Receiving objects:  51% (91/177), 294.59 MiB | 1.23 MiB/s
+Receiving objects:  51% (91/177), 296.32 MiB | 1.39 MiB/s
+Receiving objects:  51% (91/177), 298.50 MiB | 1.60 MiB/s
+Receiving objects:  51% (91/177), 299.86 MiB | 1.59 MiB/s
+Receiving objects:  51% (91/177), 300.96 MiB | 1.52 MiB/s
+Receiving objects:  51% (91/177), 302.09 MiB | 1.43 MiB/s
+Receiving objects:  51% (91/177), 303.36 MiB | 1.29 MiB/s
+Receiving objects:  51% (91/177), 304.71 MiB | 1.23 MiB/s
+Receiving objects:  51% (91/177), 306.37 MiB | 1.31 MiB/s
+Receiving objects:  51% (91/177), 308.12 MiB | 1.43 MiB/s
+Receiving objects:  51% (91/177), 310.02 MiB | 1.59 MiB/s
+Receiving objects:  51% (91/177), 312.05 MiB | 1.74 MiB/s
+Receiving objects:  51% (91/177), 314.44 MiB | 1.94 MiB/s
+Receiving objects:  51% (91/177), 315.50 MiB | 1.78 MiB/s
+Receiving objects:  51% (91/177), 317.41 MiB | 1.79 MiB/s
+Receiving objects:  51% (91/177), 318.25 MiB | 1.76 MiB/s
+Receiving objects:  51% (91/177), 320.07 MiB | 1.71 MiB/s
+Receiving objects:  51% (91/177), 321.96 MiB | 1.61 MiB/s
+Receiving objects:  51% (91/177), 323.75 MiB | 1.75 MiB/s
+Receiving objects:  51% (91/177), 325.57 MiB | 1.75 MiB/s
+Receiving objects:  51% (91/177), 327.21 MiB | 1.74 MiB/s
+Receiving objects:  51% (91/177), 329.25 MiB | 1.79 MiB/s
+Receiving objects:  51% (91/177), 330.86 MiB | 1.70 MiB/s
+Receiving objects:  51% (91/177), 332.07 MiB | 1.58 MiB/s
+Receiving objects:  51% (91/177), 333.29 MiB | 1.49 MiB/s
+Receiving objects:  51% (91/177), 334.43 MiB | 1.35 MiB/s
+Receiving objects:  51% (91/177), 335.62 MiB | 1.21 MiB/s
+Receiving objects:  51% (91/177), 336.64 MiB | 1.10 MiB/s
+Receiving objects:  51% (91/177), 337.10 MiB | 1.07 MiB/s
+Receiving objects:  51% (91/177), 338.30 MiB | 1.06 MiB/s
+Receiving objects:  51% (91/177), 339.26 MiB | 1.02 MiB/s
+Receiving objects:  51% (91/177), 340.07 MiB | 976.00 KiB/s
+Receiving objects:  51% (91/177), 340.99 MiB | 955.00 KiB/s
+Receiving objects:  51% (91/177), 341.79 MiB | 880.00 KiB/s
+Receiving objects:  51% (91/177), 342.61 MiB | 815.00 KiB/s
+Receiving objects:  51% (91/177), 343.25 MiB | 764.00 KiB/s
+Receiving objects:  51% (91/177), 343.86 MiB | 710.00 KiB/s
+Receiving objects:  51% (91/177), 344.53 MiB | 667.00 KiB/s
+Receiving objects:  51% (91/177), 344.93 MiB | 668.00 KiB/s
+Receiving objects:  51% (91/177), 345.58 MiB | 642.00 KiB/s
+Receiving objects:  51% (91/177), 345.79 MiB | 534.00 KiB/s
+Receiving objects:  51% (91/177), 346.11 MiB | 470.00 KiB/s
+Receiving objects:  51% (91/177), 346.46 MiB | 402.00 KiB/s
+Receiving objects:  51% (91/177), 346.89 MiB | 337.00 KiB/s
+Receiving objects:  51% (91/177), 347.04 MiB | 303.00 KiB/s
+Receiving objects:  51% (91/177), 347.35 MiB | 332.00 KiB/s
+Receiving objects:  51% (91/177), 347.77 MiB | 349.00 KiB/s
+Receiving objects:  51% (91/177), 348.27 MiB | 382.00 KiB/s
+Receiving objects:  51% (91/177), 348.86 MiB | 420.00 KiB/s
+Receiving objects:  51% (91/177), 349.54 MiB | 498.00 KiB/s
+Receiving objects:  51% (91/177), 350.25 MiB | 572.00 KiB/s
+Receiving objects:  51% (91/177), 350.51 MiB | 583.00 KiB/s
+Receiving objects:  51% (91/177), 351.04 MiB | 583.00 KiB/s
+Receiving objects:  51% (91/177), 351.64 MiB | 583.00 KiB/s
+Receiving objects:  51% (91/177), 351.98 MiB | 523.00 KiB/s
+Receiving objects:  51% (91/177), 352.57 MiB | 498.00 KiB/s
+Receiving objects:  51% (91/177), 352.96 MiB | 473.00 KiB/s
+Receiving objects:  51% (91/177), 353.54 MiB | 479.00 KiB/s
+Receiving objects:  51% (91/177), 353.81 MiB | 453.00 KiB/s
+Receiving objects:  51% (91/177), 354.43 MiB | 510.00 KiB/s
+Receiving objects:  51% (91/177), 355.03 MiB | 514.00 KiB/s
+Receiving objects:  51% (91/177), 355.59 MiB | 536.00 KiB/s
+Receiving objects:  52% (93/177), 355.96 MiB | 552.00 KiB/s
+Receiving objects:  53% (94/177), 355.96 MiB | 552.00 KiB/s
+Receiving objects:  54% (96/177), 355.96 MiB | 552.00 KiB/s
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+
+	at PluginClassLoader for git-client//org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandIn(CliGitAPIImpl.java:2852)
+	at PluginClassLoader for git-client//org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandWithCredentials(CliGitAPIImpl.java:2193)
+	at PluginClassLoader for git-client//org.jenkinsci.plugins.gitclient.CliGitAPIImpl$1.execute(CliGitAPIImpl.java:638)
+	at PluginClassLoader for git//hudson.plugins.git.GitSCM.fetchFrom(GitSCM.java:1012)
+	... 12 more
+ERROR: Error fetching remote repo 'origin'
+ERROR: Maximum checkout retry attempts reached, aborting
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Ver Directorio)
+Stage "Ver Directorio" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Test)
+Stage "Build & Test" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+Stage "SonarQube Analysis" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security Scan (SAST) - Semgrep)
+Stage "Security Scan (SAST) - Semgrep" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: Error fetching remote repo 'origin'
+Finished: FAILURE

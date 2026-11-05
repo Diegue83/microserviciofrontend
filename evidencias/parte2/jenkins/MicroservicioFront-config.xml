@@ -1,0 +1,97 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1622.vc41c189cb_e5f">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2293.v6e7193cec599"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2293.v6e7193cec599">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description>Pipeline del microservicio frontend (Ejercicio5Cliente) - Java 21</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.47.0">
+      <projectUrl>https://github.com/Diegue83/microserviciofrontend/</projectUrl>
+      <displayName>microserviciofrontend</displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@4403.v471713a_cea_19">
+    <script>pipeline {
+    agent any
+    tools {
+        // Deben estar definidos en Jenkins -&gt; Global Tool Configuration
+        jdk &apos;JDK21&apos;
+        maven &apos;Maven 3.9.0&apos;
+    }
+    stages {
+        stage(&apos;Checkout&apos;) {
+            steps {
+                // Descarga el código del repositorio
+                git branch: &apos;main&apos;, url: &apos;https://github.com/Diegue83/microserviciofrontend.git&apos;
+            }
+        }
+        stage(&apos;Ver Directorio&apos;) {
+            steps {
+                sh &apos;ls -la&apos;
+                sh &apos;java -version&apos;
+                sh &apos;bash &quot;$MAVEN_HOME/bin/mvn&quot; -version&apos;
+            }
+        }
+        stage(&apos;Build &amp; Test&apos;) {
+            steps {
+                sh &apos;&apos;&apos;
+                    bash &quot;$MAVEN_HOME/bin/mvn&quot; clean package -Dsurefire.useFile=false
+                &apos;&apos;&apos;
+            }
+        }
+        stage(&apos;SonarQube Analysis&apos;) {
+            steps {
+                // Utiliza el servidor de SonarQube configurado en Jenkins con el nombre &apos;SonnarServer&apos;
+                withSonarQubeEnv(&apos;SonnarServer&apos;) {
+                    sh &apos;&apos;&apos;
+                        bash &quot;$MAVEN_HOME/bin/mvn&quot; \
+                        org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar \
+                          -Dsonar.projectKey=Ejercicio5Cliente \
+                          -Dsonar.projectName=&quot;Ejercicio5Cliente&quot; \
+                          -Dsonar.host.url=http://host.docker.internal:9000 \
+                          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                    &apos;&apos;&apos;
+                }
+            }
+        }
+        stage(&apos;Security Scan (SAST) - Semgrep&apos;) {
+            steps {
+                sh &apos;&apos;&apos;
+                    mkdir -p reportes
+
+                    docker run --rm \
+                      --network bridge \
+                      -v &quot;${WORKSPACE}&quot;:/src \
+                      -w /src \
+                      semgrep/semgrep \
+                      semgrep scan \
+                        --config=auto \
+                        --exclude=target \
+                        --json \
+                        --output=reportes/semgrep.json \
+                        .
+                &apos;&apos;&apos;
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: &apos;reportes/semgrep.json&apos;,
+                        allowEmptyArchive: true,
+                        fingerprint: true
+                }
+            }
+        }
+    }
+}
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

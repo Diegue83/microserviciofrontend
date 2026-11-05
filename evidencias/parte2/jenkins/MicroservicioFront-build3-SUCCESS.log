@@ -1,0 +1,419 @@
+Started by user Diego
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Diegue83/microserviciofrontend.git # timeout=10
+Fetching upstream changes from https://github.com/Diegue83/microserviciofrontend.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Diegue83/microserviciofrontend.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 38b1593e98f2a8c1e00fce81628d9fdb618d73fe (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 38b1593e98f2a8c1e00fce81628d9fdb618d73fe # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 38b1593e98f2a8c1e00fce81628d9fdb618d73fe # timeout=10
+Commit message: "Jenkinsfile: apunta al repositorio microserviciofrontend"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Ver Directorio)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ ls -la
+total 60
+drwxr-xr-x 5 jenkins jenkins  4096 Nov  5 16:24 .
+drwxr-xr-x 6 jenkins jenkins  4096 Nov  5 16:24 ..
+drwxr-xr-x 8 jenkins jenkins  4096 Nov  5 16:24 .git
+-rw-r--r-- 1 jenkins jenkins    37 Nov  5 16:24 .gitattributes
+-rw-r--r-- 1 jenkins jenkins    81 Nov  5 16:24 .gitignore
+drwxr-xr-x 3 jenkins jenkins  4096 Nov  5 16:24 .mvn
+-rw-r--r-- 1 jenkins jenkins  1075 Nov  5 16:24 HELP.md
+-rw-r--r-- 1 jenkins jenkins  2419 Nov  5 16:24 Jenkinsfile
+-rw-r--r-- 1 jenkins jenkins 11290 Nov  5 16:24 mvnw
+-rw-r--r-- 1 jenkins jenkins  7797 Nov  5 16:24 mvnw.cmd
+-rw-r--r-- 1 jenkins jenkins  2658 Nov  5 16:24 pom.xml
+drwxr-xr-x 4 jenkins jenkins  4096 Nov  5 16:24 src
+[Pipeline] sh
++ java -version
+openjdk version "21.0.13" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode)
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn -version
+Apache Maven 3.9.0 (9b58d2bad23a66be161c4664ef21ce219c2c8584)
+Maven home: /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0
+Java version: 21.0.13, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.15.153.1-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn clean package -Dsurefire.useFile=false
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mx.cbtis:Ejercicio5Cliente >-------------------
+[INFO] Building Ejercicio5Cliente 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.16/spring-boot-starter-thymeleaf-3.5.16.pom
+Progress (1): 967 BProgress (1): 1.1 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.16/spring-boot-starter-thymeleaf-3.5.16.pom (2.3 kB at 1.9 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.pom
+Progress (1): 977 BProgress (1): 1.1 kBProgress (1): 3.0 kBProgress (1): 4.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.pom (4.6 kB at 53 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-lib/3.1.5.RELEASE/thymeleaf-lib-3.1.5.RELEASE.pom
+Progress (1): 973 BProgress (1): 1.1 kBProgress (1): 2.7 kBProgress (1): 5.0 kBProgress (1): 6.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-lib/3.1.5.RELEASE/thymeleaf-lib-3.1.5.RELEASE.pom (6.5 kB at 94 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-parent/3.1.5.RELEASE/thymeleaf-parent-3.1.5.RELEASE.pom
+Progress (1): 905 BProgress (1): 980 BProgress (1): 2.7 kBProgress (1): 5.1 kBProgress (1): 6.6 kBProgress (1): 11 kB Progress (1): 16 kBProgress (1): 18 kBProgress (1): 21 kBProgress (1): 23 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-parent/3.1.5.RELEASE/thymeleaf-parent-3.1.5.RELEASE.pom (23 kB at 245 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.2.17/spring-framework-bom-6.2.17.pom
+Progress (1): 975 BProgress (1): 1.1 kBProgress (1): 5.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.2.17/spring-framework-bom-6.2.17.pom (5.8 kB at 61 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.18.2/jackson-bom-2.18.2.pom
+Progress (1): 926 BProgress (1): 1.0 kBProgress (1): 2.9 kBProgress (1): 8.4 kBProgress (1): 15 kB Progress (1): 19 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.18.2/jackson-bom-2.18.2.pom (19 kB at 228 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.18.1/jackson-parent-2.18.1.pom
+Progress (1): 1.1 kBProgress (1): 1.2 kBProgress (1): 2.6 kBProgress (1): 4.2 kBProgress (1): 5.6 kBProgress (1): 6.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.18.1/jackson-parent-2.18.1.pom (6.7 kB at 93 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/61/oss-parent-61.pom
+Progress (1): 952 BProgress (1): 1.1 kBProgress (1): 2.7 kBProgress (1): 4.3 kBProgress (1): 5.7 kBProgress (1): 9.4 kBProgress (1): 12 kB Progress (1): 14 kBProgress (1): 16 kBProgress (1): 20 kBProgress (1): 23 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/61/oss-parent-61.pom (23 kB at 309 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/2024.0.0/reactor-bom-2024.0.0.pom
+Progress (1): 911 BProgress (1): 1.0 kBProgress (1): 4.8 kBProgress (1): 4.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/2024.0.0/reactor-bom-2024.0.0.pom (4.8 kB at 64 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.25.3/log4j-bom-2.25.3.pom
+Progress (1): 799 BProgress (1): 882 BProgress (1): 2.7 kBProgress (1): 6.4 kBProgress (1): 7.7 kBProgress (1): 12 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.25.3/log4j-bom-2.25.3.pom (12 kB at 192 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.3/junit-bom-5.14.3.pom
+Progress (1): 908 BProgress (1): 1.0 kBProgress (1): 5.2 kBProgress (1): 5.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.3/junit-bom-5.14.3.pom (5.7 kB at 82 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.pom
+Progress (1): 983 BProgress (1): 1.1 kBProgress (1): 2.9 kBProgress (1): 4.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.pom (4.0 kB at 61 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.pom
+Progress (1): 1.5 kBProgress (1): 3.1 kBProgress (1): 5.0 kBProgress (1): 7.9 kBProgress (1): 11 kB Progress (1): 11 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.pom (11 kB at 149 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.pom
+Progress (1): 1.5 kBProgress (1): 3.0 kBProgress (1): 5.1 kBProgress (1): 8.0 kBProgress (1): 10.0 kB                     Downloaded from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.pom (10.0 kB at 146 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/webjars/bootstrap/5.3.3/bootstrap-5.3.3.pom
+Progress (1): 1.2 kBProgress (1): 3.4 kBProgress (1): 6.5 kBProgress (1): 8.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/webjars/bootstrap/5.3.3/bootstrap-5.3.3.pom (8.2 kB at 128 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.16/spring-boot-starter-thymeleaf-3.5.16.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar
+Progress (1): 3.4/4.8 kBProgress (1): 4.8 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.16/spring-boot-starter-thymeleaf-3.5.16.jar (4.8 kB at 56 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/webjars/bootstrap/5.3.3/bootstrap-5.3.3.jar
+Progress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (2): 0.1/2.6 MB | 0.6/174 kBProgress (3): 0.1/2.6 MB | 0.6/174 kB | 0.6/195 kBProgress (3): 0.1/2.6 MB | 0.6/174 kB | 1.9/195 kBProgress (4): 0.1/2.6 MB | 0.6/174 kB | 1.9/195 kB | 0.6/945 kBProgress (5): 0.1/2.6 MB | 0.6/174 kB | 1.9/195 kB | 0.6/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 0.6/174 kB | 3.3/195 kB | 0.6/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 0.6/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 1.9/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 3.3/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 4.7/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 6.0/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 7.4/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 8.8/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 3.3/195 kB | 10/945 kB | 0.6/246 kB Progress (5): 0.1/2.6 MB | 1.9/174 kB | 4.7/195 kB | 10/945 kB | 0.6/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 4.7/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 6.0/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 7.4/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 8.8/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 10/195 kB | 10/945 kB | 1.9/246 kB Progress (5): 0.1/2.6 MB | 1.9/174 kB | 12/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 13/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 14/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 16/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 17/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 18/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 20/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 21/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 22/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 24/195 kB | 10/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 1.9/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 12/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 13/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 13/945 kB | 1.9/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 24/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 25/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 27/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 28/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 30/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 31/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 32/195 kB | 13/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 32/195 kB | 14/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 3.3/174 kB | 32/195 kB | 14/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 32/195 kB | 14/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 32/195 kB | 16/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 32/195 kB | 16/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 34/195 kB | 16/945 kB | 3.3/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 34/195 kB | 16/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 35/195 kB | 16/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 35/195 kB | 18/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 4.7/174 kB | 35/195 kB | 18/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 18/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 18/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 19/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 20/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 22/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 23/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 35/195 kB | 25/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 36/195 kB | 25/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 36/195 kB | 26/945 kB | 4.7/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 36/195 kB | 26/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 36/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 38/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 6.0/174 kB | 38/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 38/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 38/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 39/195 kB | 27/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 39/195 kB | 29/945 kB | 6.0/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 39/195 kB | 29/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 39/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 41/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 7.4/174 kB | 41/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 41/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 41/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 42/195 kB | 30/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 42/195 kB | 31/945 kB | 7.4/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 42/195 kB | 31/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 42/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 43/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 43/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 43/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 43/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 43/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 8.8/174 kB | 45/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 10/174 kB | 45/195 kB | 33/945 kB | 7.7/246 kB Progress (5): 0.1/2.6 MB | 10/174 kB | 46/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 12/174 kB | 46/195 kB | 33/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 12/174 kB | 46/195 kB | 34/945 kB | 7.7/246 kBProgress (5): 0.1/2.6 MB | 12/174 kB | 46/195 kB | 34/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 12/174 kB | 46/195 kB | 36/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 13/174 kB | 46/195 kB | 36/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 13/174 kB | 47/195 kB | 36/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 14/174 kB | 47/195 kB | 36/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 14/174 kB | 49/195 kB | 36/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 14/174 kB | 49/195 kB | 37/945 kB | 9.1/246 kBProgress (5): 0.1/2.6 MB | 14/174 kB | 49/195 kB | 37/945 kB | 10/246 kB Progress (5): 0.1/2.6 MB | 14/174 kB | 50/195 kB | 37/945 kB | 10/246 kBProgress (5): 0.1/2.6 MB | 15/174 kB | 50/195 kB | 37/945 kB | 10/246 kBProgress (5): 0.1/2.6 MB | 15/174 kB | 50/195 kB | 37/945 kB | 12/246 kBProgress (5): 0.1/2.6 MB | 15/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 17/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 18/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 20/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 21/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 22/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 24/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 25/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 26/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 28/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 29/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 31/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 32/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 33/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 35/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 36/174 kB | 50/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 36/174 kB | 51/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 37/174 kB | 51/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 39/174 kB | 51/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 40/174 kB | 51/195 kB | 37/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 40/174 kB | 51/195 kB | 38/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 51/195 kB | 38/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 51/195 kB | 40/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 40/945 kB | 13/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 40/945 kB | 15/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 41/945 kB | 15/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 41/945 kB | 16/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 42/945 kB | 16/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 53/195 kB | 42/945 kB | 17/246 kBProgress (5): 0.1/2.6 MB | 41/174 kB | 54/195 kB | 42/945 kB | 17/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 42/945 kB | 17/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 42/945 kB | 19/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 44/945 kB | 19/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 44/945 kB | 20/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 45/945 kB | 20/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 45/945 kB | 21/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 46/945 kB | 21/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 46/945 kB | 23/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 48/945 kB | 23/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 48/945 kB | 24/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 49/945 kB | 24/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 49/945 kB | 25/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 51/945 kB | 25/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 51/945 kB | 27/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 52/945 kB | 27/246 kBProgress (5): 0.1/2.6 MB | 43/174 kB | 54/195 kB | 53/945 kB | 27/246 kBProgress (5): 0.1/2.6 MB | 44/174 kB | 54/195 kB | 53/945 kB | 27/246 kBProgress (5): 0.1/2.6 MB | 44/174 kB | 54/195 kB | 53/945 kB | 28/246 kBProgress (5): 0.1/2.6 MB | 44/174 kB | 54/195 kB | 53/945 kB | 30/246 kBProgress (5): 0.1/2.6 MB | 44/174 kB | 54/195 kB | 53/945 kB | 31/246 kBProgress (5): 0.1/2.6 MB | 44/174 kB | 54/195 kB | 53/945 kB | 32/246 kBProgress (5): 0.1/2.6 MB | 46/174 kB | 54/195 kB | 53/945 kB | 32/246 kBProgress (5): 0.1/2.6 MB | 46/174 kB | 54/195 kB | 53/945 kB | 34/246 kBProgress (5): 0.1/2.6 MB | 46/174 kB | 54/195 kB | 53/945 kB | 35/246 kBProgress (5): 0.1/2.6 MB | 46/174 kB | 54/195 kB | 53/945 kB | 36/246 kBProgress (5): 0.1/2.6 MB | 47/174 kB | 54/195 kB | 53/945 kB | 36/246 kBProgress (5): 0.1/2.6 MB | 48/174 kB | 54/195 kB | 53/945 kB | 36/246 kBProgress (5): 0.1/2.6 MB | 48/174 kB | 54/195 kB | 53/945 kB | 38/246 kBProgress (5): 0.1/2.6 MB | 48/174 kB | 54/195 kB | 53/945 kB | 39/246 kBProgress (5): 0.1/2.6 MB | 50/174 kB | 54/195 kB | 53/945 kB | 39/246 kBProgress (5): 0.1/2.6 MB | 50/174 kB | 54/195 kB | 53/945 kB | 41/246 kBProgress (5): 0.1/2.6 MB | 51/174 kB | 54/195 kB | 53/945 kB | 41/246 kBProgress (5): 0.1/2.6 MB | 51/174 kB | 54/195 kB | 53/945 kB | 42/246 kBProgress (5): 0.1/2.6 MB | 52/174 kB | 54/195 kB | 53/945 kB | 42/246 kBProgress (5): 0.1/2.6 MB | 52/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 54/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 55/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 59/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 64/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 68/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 43/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 45/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 46/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 47/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 49/246 kBProgress (5): 0.1/2.6 MB | 72/174 kB | 54/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 76/174 kB | 54/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 76/174 kB | 58/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 80/174 kB | 58/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 58/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 63/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 67/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 71/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 75/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 80/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 85/174 kB | 84/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 89/174 kB | 84/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 93/174 kB | 84/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 93/174 kB | 88/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 97/174 kB | 88/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 97/174 kB | 92/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 102/174 kB | 92/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 102/174 kB | 97/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 106/174 kB | 97/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 110/174 kB | 97/195 kB | 53/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 110/174 kB | 97/195 kB | 55/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 110/174 kB | 97/195 kB | 59/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 114/174 kB | 97/195 kB | 59/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 50/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 51/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 53/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 54/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 57/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 59/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 119/174 kB | 97/195 kB | 63/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 123/174 kB | 97/195 kB | 63/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 123/174 kB | 97/195 kB | 66/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 123/174 kB | 97/195 kB | 70/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 127/174 kB | 97/195 kB | 70/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 127/174 kB | 97/195 kB | 74/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 127/174 kB | 97/195 kB | 78/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 127/174 kB | 97/195 kB | 82/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 127/174 kB | 97/195 kB | 86/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 131/174 kB | 97/195 kB | 86/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 61/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 65/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 70/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 74/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 78/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 82/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 97/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 101/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 105/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 109/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 135/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 140/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 140/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 144/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 148/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 113/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 86/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 90/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 95/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 99/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 103/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 107/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 112/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 115/945 kB | 86/246 kBProgress (5): 0.1/2.6 MB | 152/174 kB | 118/195 kB | 119/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 152/174 kB | 118/195 kB | 119/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 157/174 kB | 118/195 kB | 119/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 161/174 kB | 118/195 kB | 119/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 161/174 kB | 118/195 kB | 123/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 161/174 kB | 118/195 kB | 127/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 161/174 kB | 118/195 kB | 131/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 161/174 kB | 122/195 kB | 131/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 165/174 kB | 122/195 kB | 131/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 165/174 kB | 126/195 kB | 131/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 86/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 91/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 95/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 99/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 103/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 108/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 112/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 116/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 120/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 126/195 kB | 131/945 kB | 122/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 130/195 kB | 131/945 kB | 122/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 130/195 kB | 135/945 kB | 122/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 135/195 kB | 135/945 kB | 122/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 135/195 kB | 135/945 kB | 127/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 135/195 kB | 140/945 kB | 127/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 139/195 kB | 140/945 kB | 127/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 139/195 kB | 144/945 kB | 127/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 139/195 kB | 144/945 kB | 131/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 139/195 kB | 144/945 kB | 135/246 kBProgress (5): 0.2/2.6 MB | 169/174 kB | 139/195 kB | 144/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 173/174 kB | 139/195 kB | 144/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 173/174 kB | 143/195 kB | 144/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 173/174 kB | 143/195 kB | 147/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 173/174 kB | 147/195 kB | 147/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 174 kB | 147/195 kB | 147/945 kB | 139/246 kB    Progress (5): 0.2/2.6 MB | 174 kB | 147/195 kB | 152/945 kB | 139/246 kBProgress (5): 0.2/2.6 MB | 174 kB | 151/195 kB | 152/945 kB | 139/246 kB                                                                        Downloaded from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar (174 kB at 294 kB/s)
+Progress (4): 0.2/2.6 MB | 155/195 kB | 152/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 159/195 kB | 152/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 164/195 kB | 152/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 168/195 kB | 152/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 152/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 156/945 kB | 139/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 156/945 kB | 144/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 160/945 kB | 144/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 160/945 kB | 148/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 148/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 152/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 156/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 160/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.2/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 172/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 176/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 181/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 185/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 185/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 189/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 193/195 kB | 164/945 kB | 165/246 kBProgress (4): 0.3/2.6 MB | 195 kB | 164/945 kB | 165/246 kB                                                               Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.jar (195 kB at 302 kB/s)
+Progress (3): 0.3/2.6 MB | 169/945 kB | 165/246 kBProgress (3): 0.3/2.6 MB | 169/945 kB | 169/246 kBProgress (3): 0.3/2.6 MB | 173/945 kB | 169/246 kBProgress (3): 0.3/2.6 MB | 173/945 kB | 173/246 kBProgress (3): 0.3/2.6 MB | 177/945 kB | 173/246 kBProgress (3): 0.3/2.6 MB | 177/945 kB | 177/246 kBProgress (3): 0.3/2.6 MB | 177/945 kB | 182/246 kBProgress (3): 0.3/2.6 MB | 180/945 kB | 182/246 kBProgress (3): 0.3/2.6 MB | 180/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 181/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 186/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 190/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 194/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 198/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 202/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 207/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 186/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 190/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 194/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 199/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 203/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 207/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 207/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 207/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 211/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 215/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 215/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 220/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 236/246 kBProgress (3): 0.3/2.6 MB | 211/945 kB | 246 kB                                                  Downloaded from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar (246 kB at 341 kB/s)
+Progress (2): 0.3/2.6 MB | 215/945 kBProgress (2): 0.3/2.6 MB | 219/945 kBProgress (2): 0.3/2.6 MB | 236/945 kBProgress (2): 0.3/2.6 MB | 252/945 kBProgress (2): 0.3/2.6 MB | 269/945 kBProgress (2): 0.3/2.6 MB | 285/945 kBProgress (2): 0.3/2.6 MB | 301/945 kBProgress (2): 0.3/2.6 MB | 311/945 kBProgress (2): 0.3/2.6 MB | 328/945 kBProgress (2): 0.3/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.4/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.5/2.6 MB | 344/945 kBProgress (2): 0.6/2.6 MB | 344/945 kBProgress (2): 0.6/2.6 MB | 360/945 kBProgress (2): 0.6/2.6 MB | 377/945 kBProgress (2): 0.6/2.6 MB | 393/945 kBProgress (2): 0.6/2.6 MB | 410/945 kBProgress (2): 0.6/2.6 MB | 426/945 kBProgress (2): 0.6/2.6 MB | 442/945 kBProgress (2): 0.6/2.6 MB | 459/945 kBProgress (2): 0.6/2.6 MB | 459/945 kBProgress (2): 0.6/2.6 MB | 475/945 kBProgress (2): 0.6/2.6 MB | 475/945 kBProgress (2): 0.6/2.6 MB | 492/945 kBProgress (2): 0.6/2.6 MB | 508/945 kBProgress (2): 0.6/2.6 MB | 524/945 kBProgress (2): 0.6/2.6 MB | 541/945 kBProgress (2): 0.6/2.6 MB | 557/945 kBProgress (2): 0.6/2.6 MB | 557/945 kBProgress (2): 0.6/2.6 MB | 557/945 kBProgress (2): 0.6/2.6 MB | 573/945 kBProgress (2): 0.6/2.6 MB | 590/945 kBProgress (2): 0.6/2.6 MB | 590/945 kBProgress (2): 0.7/2.6 MB | 590/945 kBProgress (2): 0.7/2.6 MB | 590/945 kBProgress (2): 0.7/2.6 MB | 590/945 kBProgress (2): 0.7/2.6 MB | 606/945 kBProgress (2): 0.7/2.6 MB | 623/945 kBProgress (2): 0.7/2.6 MB | 623/945 kBProgress (2): 0.7/2.6 MB | 623/945 kBProgress (2): 0.7/2.6 MB | 623/945 kBProgress (2): 0.7/2.6 MB | 639/945 kBProgress (2): 0.7/2.6 MB | 655/945 kBProgress (2): 0.7/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.8/2.6 MB | 672/945 kBProgress (2): 0.9/2.6 MB | 672/945 kBProgress (2): 0.9/2.6 MB | 672/945 kBProgress (2): 0.9/2.6 MB | 672/945 kBProgress (2): 0.9/2.6 MB | 688/945 kBProgress (2): 0.9/2.6 MB | 705/945 kBProgress (2): 0.9/2.6 MB | 721/945 kBProgress (2): 0.9/2.6 MB | 721/945 kBProgress (2): 0.9/2.6 MB | 737/945 kBProgress (2): 0.9/2.6 MB | 754/945 kBProgress (2): 0.9/2.6 MB | 770/945 kBProgress (2): 0.9/2.6 MB | 786/945 kBProgress (2): 0.9/2.6 MB | 803/945 kBProgress (2): 0.9/2.6 MB | 819/945 kBProgress (2): 0.9/2.6 MB | 836/945 kBProgress (2): 0.9/2.6 MB | 852/945 kBProgress (2): 0.9/2.6 MB | 852/945 kBProgress (2): 0.9/2.6 MB | 868/945 kBProgress (2): 0.9/2.6 MB | 885/945 kBProgress (2): 0.9/2.6 MB | 901/945 kBProgress (2): 0.9/2.6 MB | 918/945 kBProgress (2): 0.9/2.6 MB | 934/945 kBProgress (2): 0.9/2.6 MB | 934/945 kBProgress (2): 1.0/2.6 MB | 934/945 kBProgress (2): 1.0/2.6 MB | 945 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.jar (945 kB at 615 kB/s)
+Progress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/webjars/bootstrap/5.3.3/bootstrap-5.3.3.jar (2.6 MB at 960 kB/s)
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ Ejercicio5Cliente ---
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ Ejercicio5Cliente ---
+[INFO] argLine set to -javaagent:/var/jenkins_home/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Ejercicio5Cliente ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 132 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ Ejercicio5Cliente ---
+[INFO] skip non existing resourceDirectory /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ Ejercicio5Cliente ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ Ejercicio5Cliente ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.mx.cbtis.bromitas.GestorControllerTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.694 s -- in com.mx.cbtis.bromitas.GestorControllerTest
+[INFO] Running com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+16:25:14.583 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests]: Ejercicio5ClienteApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:25:14.875 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mx.cbtis.Ejercicio5ClienteApplication for test class com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-05T16:25:16.079Z  INFO 3470 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Starting Ejercicio5ClienteApplicationTests using Java 21.0.13 with PID 3470 (started by jenkins in /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront)
+2026-11-05T16:25:16.082Z  INFO 3470 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-11-05T16:25:18.788Z  INFO 3470 --- [Ejercicio5Cliente] [           main] .m.c.b.Ejercicio5ClienteApplicationTests : Started Ejercicio5ClienteApplicationTests in 3.503 seconds (process running for 9.202)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.085 s -- in com.mx.cbtis.bromitas.Ejercicio5ClienteApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ Ejercicio5Cliente ---
+[INFO] Loading execution data file /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/jacoco.exec
+[INFO] Analyzed bundle 'Ejercicio5Cliente' with 7 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ Ejercicio5Cliente ---
+[INFO] Building jar: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ Ejercicio5Cliente ---
+[INFO] Replacing main artifact /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/Ejercicio5Cliente-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:05 min
+[INFO] Finished at: 2026-11-05T16:25:59Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonnarServer
+[Pipeline] {
+[Pipeline] sh
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar -Dsonar.projectKey=Ejercicio5Cliente -Dsonar.projectName=Ejercicio5Cliente -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mx.cbtis:Ejercicio5Cliente >-------------------
+[INFO] Building Ejercicio5Cliente 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:5.5.0.6356:sonar (default-cli) @ Ejercicio5Cliente ---
+[INFO] Java 21.0.13 Eclipse Adoptium (64-bit)
+[INFO] Linux 5.15.153.1-microsoft-standard-WSL2 (amd64)
+[INFO] Communicating with SonarQube Community Build 26.10.0.133078
+[INFO] JRE provisioning: os[linux], arch[x86_64]
+[INFO] Starting SonarScanner Engine...
+[INFO] Java 21.0.12.1 Eclipse Adoptium (64-bit)
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=338ms
+[INFO] Server id: 147B411E-AaGqSEze5s7z_3pHvC2O
+[INFO] Loading required plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=58ms
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=23ms
+[INFO] Load project settings for component key: 'Ejercicio5Cliente'
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=44ms
+[INFO] Project key: Ejercicio5Cliente
+[INFO] Base dir: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront
+[INFO] Working dir: /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/sonar
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=796ms
+[INFO] Auto-configuring with CI 'Jenkins'
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=1126ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (404) | time=49ms
+[INFO] Preprocessing files...
+[INFO] 2 languages detected in 10 preprocessed files (done) | time=436ms
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Loading plugins for detected languages
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=101ms
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=12ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 10 files indexed (done) | time=11ms
+[INFO] Quality profile for java: Sonar way core
+[INFO] Quality profile for xml: Sonar way core
+[INFO] ------------- Run sensors on module Ejercicio5Cliente
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=34ms
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac]
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=7ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 21, preview features enabled (sonar.java.enablePreview): false
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 7 Main java source files with batch size 50 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 7 files.
+[INFO] Using ECJ batch to parse 2 Test java source files with batch size 50 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 2 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=3167ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=58ms
+[INFO] Sensor IaC hadolint report Sensor [iac]
+[INFO] Sensor IaC hadolint report Sensor [iac] (done) | time=2ms
+[INFO] Sensor Java Config Sensor [iac]
+[INFO] There are no files to be analyzed for the Java language
+[INFO] Sensor Java Config Sensor [iac] (done) | time=1ms
+[INFO] Sensor IaC Docker Sensor [iac]
+[INFO] There are no files to be analyzed for the Docker language
+[INFO] Sensor IaC Docker Sensor [iac] (done) | time=13ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=152ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=307ms
+[INFO] Sensor TextAndSecretsSensor [text]
+[INFO] Available processors: 4
+[INFO] Using 4 threads for analysis.
+[INFO] Start fetching files for the text and secrets analysis
+[INFO] Using Git CLI to retrieve dirty files
+[INFO] Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+[INFO] Starting the text and secrets analysis
+[INFO] 10 source files to be analyzed for the text and secrets analysis
+[INFO] 10/10 source files have been analyzed for the text and secrets analysis
+[INFO] Sensor TextAndSecretsSensor [text] (done) | time=634ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco]
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco] (done) | time=0ms
+[INFO] Sensor IaC Project Sensor [iac]
+[INFO] Sensor IaC Project Sensor [iac] (done) | time=1ms
+[INFO] Sensor JavaProjectSensor [java]
+[INFO] Sensor JavaProjectSensor [java] (done) | time=2ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=0ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=38ms
+[INFO] ------------- Gather SCA dependencies on project
+[INFO] Dependency analysis skipped
+[INFO] SCM Publisher SCM provider for this project is: git
+[INFO] SCM Publisher 10 source files to be analyzed
+[INFO] SCM Publisher 10/10 source files have been analyzed (done) | time=283ms
+[INFO] CPD Executor 1 file had no CPD blocks
+[INFO] CPD Executor Calculating CPD for 6 files
+[INFO] CPD Executor CPD calculation finished (done) | time=14ms
+[INFO] SCM revision ID '38b1593e98f2a8c1e00fce81628d9fdb618d73fe'
+[INFO] Analysis report generated in 269ms, dir size=226.5 kB
+[INFO] Analysis report compressed in 72ms, zip size=51.5 kB
+[INFO] Analysis report uploaded in 968ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=Ejercicio5Cliente
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at http://host.docker.internal:9000/api/ce/task?id=7b8920ff-3ea8-4b77-bc30-6a3ff404f7d5
+[INFO] Analysis total time: 17.327 s
+[INFO] SonarScanner Engine completed successfully
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.879 s
+[INFO] Finished at: 2026-11-05T16:26:32Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security Scan (SAST) - Semgrep)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mkdir -p reportes
++ docker run --rm --network bridge -v /var/lib/docker/volumes/jenkins_home/_data/workspace/MicroservicioFront:/src -w /src semgrep/semgrep semgrep scan --config=auto --exclude=target --json --output=reportes/semgrep.json .
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 75 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      61      75          Community    1074                                                                
+  js              153       8                                                                                           
+  html              1       8                                                                                           
+  java            118       7                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 20 (20 blocking)
+ • Rules run: 332
+ • Targets scanned: 75
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Files larger than  files 1.0 MB: 11
+   ◦ Files matching .semgrepignore patterns: 7
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 332 rules on 75 files: 20 findings.
+Post stage
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

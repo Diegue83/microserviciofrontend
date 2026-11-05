@@ -1,0 +1,31 @@
+﻿Jenkins usando JDK 21 y Maven 3.9.0 - etapa 'Ver Directorio' del pipeline MicroservicioBack #4 (2026-11-05)
+
+[Pipeline] { (Ver Directorio)
++ ls -la
+total 72
+drwxr-xr-x  8 jenkins jenkins  4096 Nov  5 18:11 .
+drwxr-xr-x  8 jenkins jenkins  4096 Nov  5 17:25 ..
+drwxr-xr-x  8 jenkins jenkins  4096 Nov  5 18:16 .git
+-rw-r--r--  1 jenkins jenkins    37 Nov  5 15:55 .gitattributes
+-rw-r--r--  1 jenkins jenkins    81 Nov  5 15:55 .gitignore
+drwxr-xr-x  3 jenkins jenkins  4096 Nov  5 15:55 .mvn
+-rw-r--r--  1 jenkins jenkins  1063 Nov  5 15:55 HELP.md
+-rw-r--r--  1 jenkins jenkins  2426 Nov  5 15:55 Jenkinsfile
+drwxr-xr-x  2 jenkins jenkins  4096 Nov  5 15:55 db
+-rw-r--r--  1 jenkins jenkins 11290 Nov  5 15:55 mvnw
+-rw-r--r--  1 jenkins jenkins  7797 Nov  5 15:55 mvnw.cmd
+-rw-r--r--  1 jenkins jenkins  3003 Nov  5 15:55 pom.xml
+drwxr-xr-x  2 jenkins jenkins  4096 Nov  5 16:06 reportes
+drwxr-xr-x  4 jenkins jenkins  4096 Nov  5 15:55 src
+drwxr-xr-x 10 jenkins jenkins  4096 Nov  5 18:13 target
++ java -version
+openjdk version "21.0.13" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode)
++ bash /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0/bin/mvn -version
+Apache Maven 3.9.0 (9b58d2bad23a66be161c4664ef21ce219c2c8584)
+Maven home: /var/lib/docker/volumes/jenkins_home/_data/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.9.0
+Java version: 21.0.13, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.15.153.1-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+[Pipeline] stage
