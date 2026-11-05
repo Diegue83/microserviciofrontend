@@ -28,6 +28,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mx.cbtis.modelo.Comentarios;
 import com.mx.cbtis.modelo.Proyectos;
 import com.mx.cbtis.modelo.Tareas;
 import com.mx.cbtis.modelo.Usuario;
@@ -258,5 +259,226 @@ class GestorControllerTest {
         tarea.setId_proyecto(197);
 
         assertThrows(HttpServerErrorException.class, () -> controller.setSaveTareas(tarea));
+    }
+
+    // ------------------------------------------------------------------
+    // VISTAS Y RESTO DE SERVICIOS
+    // ------------------------------------------------------------------
+
+    @Test
+    @Order(11)
+    @DisplayName("AUT-V01 · Vistas estáticas: home, tutorial, manual y login devuelven su plantilla")
+    void vistasEstaticas() {
+        assertEquals("home", controller.getHome());
+        assertEquals("tutorial", controller.getTutorial());
+        assertEquals("manual", controller.getManual());
+        assertEquals("login", controller.getLogin());
+    }
+
+    @Test
+    @Order(12)
+    @DisplayName("AUT-V02 · Registro e Inicio: preparan el objeto vacío del formulario")
+    void vistasConFormulario() {
+        ExtendedModelMap modelo = new ExtendedModelMap();
+        assertEquals("register", controller.getRegister(modelo));
+        assertTrue(modelo.get("usuario") instanceof Usuario);
+
+        ExtendedModelMap modeloInicio = new ExtendedModelMap();
+        assertEquals("inicio", controller.getInicio(modeloInicio));
+        assertTrue(modeloInicio.get("proyectos") instanceof Proyectos);
+    }
+
+    @Test
+    @Order(13)
+    @DisplayName("AUT-E06 · Registro de usuario: se envía a la API y redirige a Login")
+    void guardarUsuario_redirigeALogin() {
+        api("/addUsuario", 200, "1");
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Luis");
+        usuario.setCorreo_electronico("luis@cbtis75.edu.mx");
+
+        ModelAndView vista = controller.setSaveUsuario(usuario);
+
+        assertEquals("redirect:/login", vista.getViewName());
+        assertTrue(recibido.get("/addUsuario").contains("\"correo_electronico\":\"luis@cbtis75.edu.mx\""));
+    }
+
+    @Test
+    @Order(14)
+    @DisplayName("AUT-E07 · Eliminar proyecto: envía DELETE con el proyecto y redirige a Inicio")
+    void eliminarProyecto_redirigeAInicio() {
+        api("/deleteProyecto", 200, "1");
+        Proyectos proyecto = new Proyectos();
+        proyecto.setId_proyecto(206);
+
+        ModelAndView vista = controller.eliminarProyecto(proyecto);
+
+        assertEquals("redirect:/inicio", vista.getViewName());
+        assertTrue(recibido.get("/deleteProyecto").contains("\"id_proyecto\":206"));
+    }
+
+    @Test
+    @Order(15)
+    @DisplayName("AUT-E08 · Consultar usuarios: devuelve la lista y la agrega al modelo")
+    void consultarUsuarios_devuelveLista() {
+        api("/buscarUsuarios", 200, "[{\"id_usuario\":131,\"nombre\":\"Ana\"},{\"id_usuario\":132,\"nombre\":\"Luis\"}]");
+        ExtendedModelMap modelo = new ExtendedModelMap();
+
+        ResponseEntity<Object> respuesta = controller.consultarUsuarios(modelo);
+
+        assertEquals(200, respuesta.getStatusCode().value());
+        @SuppressWarnings("unchecked")
+        List<Usuario> usuarios = (List<Usuario>) respuesta.getBody();
+        assertEquals(2, usuarios.size());
+        assertEquals("Luis", usuarios.get(1).getNombre());
+        assertTrue(modelo.containsAttribute("listaUsuarios"));
+    }
+
+    @Test
+    @Order(16)
+    @DisplayName("AUT-E09 · Comentarios de una tarea: se envía el id_tarea y se devuelven los comentarios")
+    void obtenerComentarios_devuelveComentarios() {
+        api("/getComentario", 200, "[{\"id_comentario\":10,\"id_usuario\":\"131\",\"id_tarea\":199,\"texto_comentario\":\"Listo\"}]");
+        Comentarios filtro = new Comentarios();
+        filtro.setId_tarea(199);
+        ExtendedModelMap modelo = new ExtendedModelMap();
+
+        ResponseEntity<List<Comentarios>> respuesta = controller.obtenerComentarios(filtro, modelo);
+
+        assertEquals(200, respuesta.getStatusCode().value());
+        assertEquals("Listo", respuesta.getBody().get(0).getTexto_comentario());
+        assertTrue(recibido.get("/getComentario").contains("\"id_tarea\":199"));
+        assertTrue(modelo.containsAttribute("comentarios"));
+    }
+
+    @Test
+    @Order(17)
+    @DisplayName("AUT-V03 · Vista del proyecto: carga los usuarios y prepara tarea y comentario vacíos")
+    void vistaProyecto_cargaUsuarios() {
+        api("/buscarUsuarios", 200, "[{\"id_usuario\":131,\"nombre\":\"Ana\"}]");
+        ExtendedModelMap modelo = new ExtendedModelMap();
+
+        assertEquals("proyecto", controller.getProyecto(modelo));
+
+        assertTrue(modelo.get("tarea") instanceof Tareas);
+        assertTrue(modelo.get("comentarios") instanceof Comentarios);
+        @SuppressWarnings("unchecked")
+        List<Usuario> usuarios = (List<Usuario>) modelo.get("listaUsuarios");
+        assertEquals(1, usuarios.size());
+
+        ExtendedModelMap modeloTarea = new ExtendedModelMap();
+        assertEquals("proyecto", controller.getTarea(modeloTarea));
+        assertTrue(modeloTarea.get("tareas") instanceof Tareas);
+    }
+
+    @Test
+    @Order(18)
+    @DisplayName("AUT-E10 · Formulario de tarea completo: los campos con valor se envían tal cual")
+    void guardarTarea_camposConValor() {
+        api("/addTareas", 200, "1");
+        Tareas tarea = new Tareas();
+        tarea.setNombre("Pruebas");
+        tarea.setDescripcion("   ");
+        tarea.setFecha_vencimiento("2026-11-20");
+        tarea.setEstado("warning");
+        tarea.setId_proyecto(197);
+
+        controller.setSaveTareas(tarea);
+
+        String cuerpo = recibido.get("/addTareas");
+        assertTrue(cuerpo.contains("\"fecha_vencimiento\":\"2026-11-20\""));
+        assertTrue(cuerpo.contains("\"estado\":\"warning\""));
+        // Una descripción solo con espacios se envía como null
+        assertTrue(cuerpo.contains("\"descripcion\":null"));
+    }
+
+    @Test
+    @Order(19)
+    @DisplayName("AUT-E11 · Formulario de tarea: fecha con espacios y estado vacío se envían como null")
+    void guardarTarea_fechaYEstadoEnBlanco() {
+        api("/addTareas", 200, "1");
+        Tareas tarea = new Tareas();
+        tarea.setNombre("Documentación");
+        tarea.setFecha_vencimiento("  ");
+        tarea.setEstado("");
+        tarea.setId_proyecto(197);
+
+        controller.setSaveTareas(tarea);
+
+        String cuerpo = recibido.get("/addTareas");
+        assertTrue(cuerpo.contains("\"fecha_vencimiento\":null"));
+        assertTrue(cuerpo.contains("\"estado\":null"));
+    }
+
+    @Test
+    @Order(20)
+    @DisplayName("AUT-E12 · Guardar comentario: se envía a la API y vuelve a la vista del proyecto")
+    void guardarComentario() {
+        api("/addComentario", 200, "1");
+        Comentarios comentario = new Comentarios();
+        comentario.setId_tarea(199);
+        comentario.setTexto_comentario("Revisado");
+
+        assertEquals("proyecto", controller.setSaveComentario(comentario));
+        assertTrue(recibido.get("/addComentario").contains("\"texto_comentario\":\"Revisado\""));
+    }
+
+    @Test
+    @Order(21)
+    @DisplayName("AUT-E13 · Editar tarea: consulta la tarea por id_tarea")
+    void actualizarTarea_consultaPorId() {
+        api("/buscarTarea", 200, "{\"id_tarea\":199,\"nombre\":\"Base de datos\",\"id_proyecto\":197}");
+        Tareas solicitud = new Tareas();
+        solicitud.setId_tarea(199);
+
+        ResponseEntity<Object> respuesta = controller.updateTarea(solicitud);
+
+        assertEquals(200, respuesta.getStatusCode().value());
+        assertEquals("Base de datos", ((Tareas) respuesta.getBody()).getNombre());
+    }
+
+    @Test
+    @Order(22)
+    @DisplayName("AUT-E14 · Eliminar tarea: envía DELETE con la tarea y redirige al proyecto")
+    void eliminarTarea_redirigeAProyecto() {
+        api("/deleteTareas", 200, "1");
+        Tareas tarea = new Tareas();
+        tarea.setId_tarea(209);
+
+        ModelAndView vista = controller.eliminarTarea(tarea);
+
+        assertEquals("redirect:/proyecto", vista.getViewName());
+        assertTrue(recibido.get("/deleteTareas").contains("\"id_tarea\":209"));
+    }
+
+    @Test
+    @Order(23)
+    @DisplayName("AUT-E15 · Verificar y cambiar tareas: reenvían la tarea a la API y devuelven su respuesta")
+    void verificarYCambiarTareas() {
+        api("/addTareas", 200, "1");
+        Tareas tarea = new Tareas();
+        tarea.setId_tarea(209);
+        tarea.setLista("terminado");
+
+        assertEquals(1, controller.verificarTarea(tarea).getBody().intValue());
+        assertEquals(1, controller.cambiosTareas(tarea).getBody().intValue());
+        assertTrue(recibido.get("/addTareas").contains("\"lista\":\"terminado\""));
+    }
+
+    @Test
+    @Order(24)
+    @DisplayName("AUT-E16 · Consultar todas las tareas y todos los comentarios")
+    void consultarTareasYComentarios() {
+        api("/buscarTareas", 200, "[{\"id_tarea\":199},{\"id_tarea\":209}]");
+        api("/buscarComentarios", 200, "[{\"id_comentario\":10}]");
+
+        @SuppressWarnings("unchecked")
+        List<Tareas> tareas = (List<Tareas>) controller.consultarTareas().getBody();
+        @SuppressWarnings("unchecked")
+        List<Comentarios> comentarios = (List<Comentarios>) controller.consultarComentarios().getBody();
+
+        assertEquals(2, tareas.size());
+        assertEquals(1, comentarios.size());
+        assertEquals(10, comentarios.get(0).getId_comentario().intValue());
     }
 }
