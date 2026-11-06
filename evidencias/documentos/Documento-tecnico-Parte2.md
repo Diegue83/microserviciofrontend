@@ -192,4 +192,4 @@ Los logs de todos los builds, incluidos los fallidos, están en `02-jenkins`. La
 | Escaneo de vulnerabilidades excluyendo carpetas `target` | Sección 5; `04-semgrep` (`--exclude=target`) |
 | Clasificación y atención de incidencias reales, con evidencia | Sección 6; `09-incidencias`; commits `6ec50c0` y `c285784`; capturas `14` y `19` |
 | Tres pipelines funcionales: frontend, backend y base de datos | Sección 7; `02-jenkins`, `08-base-de-datos`; captura `10` |
-| Video de ejecución de pipelines y explicación del aprendizaje | `10-video/practica3-pipelines.mp4` y `guion-video.md` (la narración la agrega el alumno) |
+| Video de ejecución de pipelines y explicación del aprendizaje | `10-video/Practica3-video-pipelines-FINAL.mp4` (5:24, narrado) y `guion-video.md`. Los problemas y aprendizajes se detallan en la sección 8 |
