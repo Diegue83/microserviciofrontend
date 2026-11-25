@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  SONAR_PROJECT_KEY: Diegue83_microserviciofrontend
+  SONAR_ORGANIZATION: diegue83
+
+jobs:
+  build-test-calidad:
+    name: Build & Test + SonarCloud
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # SonarCloud usa el historial completo para el blame
+
+      - name: JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Versiones
+        run: |
+          java -version
+          chmod +x mvnw
+          ./mvnw -B -version
+
+      - name: Build & Test (Surefire + JaCoCo)
+        run: ./mvnw -B clean verify -Dsurefire.useFile=false
+
+      - name: Análisis SonarCloud (Quality Gate)
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: >
+          ./mvnw -B org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.organization=${{ env.SONAR_ORGANIZATION }}
+          -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          -Dsonar.qualitygate.wait=true
+
+      - name: Reportes de pruebas y cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-pruebas-cobertura
+          path: |
+            target/surefire-reports/
+            target/site/jacoco/
+          retention-days: 30
+
+  sast:
+    name: Security Scan (SAST) - Semgrep
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      security-events: write # publicar resultados en GitHub code scanning
+    container:
+      image: semgrep/semgrep
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Semgrep (excluye target)
+        run: |
+          mkdir -p reportes
+          semgrep scan --config=auto --exclude=target --json --output=reportes/semgrep.json .
+          semgrep scan --config=auto --exclude=target --sarif --output=reportes/semgrep.sarif .
+
+      - name: Publicar en code scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: reportes/semgrep.sarif
+
+      - name: Reporte Semgrep
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-semgrep
+          path: reportes/
+          retention-days: 30
